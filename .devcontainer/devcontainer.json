@@ -1,12 +1,10 @@
 {
   "name": "Engineering Standards Portal",
   "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
-
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-
   "customizations": {
     "vscode": {
       "settings": {
@@ -15,21 +13,30 @@
         "[markdown]": {
           "editor.defaultFormatter": "yzhang.markdown-all-in-one",
           "editor.wordWrap": "on"
-        }
+        },
+        "cSpell.words": [
+          "charliermarsh",
+          "tamasfe",
+          "yzhang",
+          "Anson",
+          "devcontainers",
+          "bookworm",
+          "markdownlint",
+          "streetsidesoftware",
+          "redhat"
+        ]
       },
       "extensions": [
         "ms-python.python",
-        "charliermarsh.ruff",                    // Python Linter (Fast)
-        "tamasfe.even-better-toml",              // For editing pyproject.toml
-        "yzhang.markdown-all-in-one",            // Markdown shortcuts and formatting
-        "DavidAnson.vscode-markdownlint",        // Markdown Best Practices Linter
-        "streetsidesoftware.code-spell-checker", // Spell checker (Critical for docs)
-        "redhat.vscode-yaml"                     // For editing mkdocs.yml and workflows
+        "charliermarsh.ruff",
+        "tamasfe.even-better-toml",
+        "yzhang.markdown-all-in-one",
+        "DavidAnson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker",
+        "redhat.vscode-yaml"
       ]
     }
   },
-
   "postCreateCommand": "pip install uv && uv sync && uv run pre-commit install",
-
   "remoteUser": "vscode"
 }
