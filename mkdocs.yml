@@ -1,0 +1,144 @@
+site_name: Engineering Standards & Guidelines
+site_description: Personal engineering knowledge base - Standards, Golden Paths, and best practices for building robust, scalable software.
+site_author: Fernando Landero
+repo_url: https://github.com/landerox/engineering-standards
+repo_name: engineering-standards
+
+theme:
+  name: material
+  language: en
+  palette:
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+
+  - Backend:
+    - Python Development Standards: backend/python-development-standards.md
+    # - API Design Standards: backend/api-design-standards.md
+
+  - Data Platform:
+    - Overview: data-platform/index.md
+    # - Databases:
+    #   - PostgreSQL & AlloyDB: data-platform/databases/postgresql-standards.md
+    #   - Graph Databases: data-platform/databases/graph-databases.md
+    #   - Vector Databases: data-platform/databases/vector-databases.md
+    #   - DuckDB: data-platform/databases/duckdb-standards.md
+    # - Analytics:
+    #   - BigQuery Standards: data-platform/analytics/bigquery-standards.md
+    #   - Lakehouse Architecture: data-platform/analytics/lakehouse-architecture.md
+    #   - dbt & Dataform: data-platform/analytics/dbt-dataform-standards.md
+    # - Pipelines:
+    #   - Dagster Standards: data-platform/pipelines/dagster-standards.md
+    #   - Dataflow Standards: data-platform/pipelines/dataflow-standards.md
+    #   - Pub/Sub Standards: data-platform/pipelines/pubsub-standards.md
+
+  - AI & ML:
+    - Overview: ai-ml/index.md
+    # - Vertex AI Standards: ai-ml/vertex-ai-standards.md
+    # - MLOps Standards: ai-ml/mlops-standards.md
+    # - GenAI Standards: ai-ml/genai-standards.md
+    # - Agentic Patterns: ai-ml/agentic-patterns.md
+
+  - Infrastructure:
+    - Overview: infrastructure/index.md
+    # - Terraform Standards: infrastructure/terraform-standards.md
+    # - Cloud Run Standards: infrastructure/cloud-run-standards.md
+    # - GKE Standards: infrastructure/gke-standards.md
+
+  - CI/CD:
+    - Overview: cicd/index.md
+    # - GitHub Actions: cicd/github-actions-standards.md
+    # - Security Scanning: cicd/security-scanning-standards.md
+
+markdown_extensions:
+  # Tables
+  - tables
+
+  # Admonitions (note, warning, tip, etc.)
+  - admonition
+  - pymdownx.details
+
+  # Code blocks
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+
+  # Tabs
+  - pymdownx.tabbed:
+      alternate_style: true
+
+  # Task lists
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+  # Formatting
+  - pymdownx.mark
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.tilde
+
+  # Table of contents
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+  # Abbreviations
+  - abbr
+  - attr_list
+  - md_in_html
+
+  # Footnotes
+  - footnotes
+
+plugins:
+  - search:
+      lang: en
+  - minify:
+      minify_html: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/landerox
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/landerox
+
+  generator: false
+
+extra_css:
+  - assets/stylesheets/extra.css
