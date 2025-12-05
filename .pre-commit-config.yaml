@@ -28,4 +28,4 @@ repos:
         # We ignore some strict rules to allow flexibility
         # MD013: Line length (MkDocs handles long lines well)
         # MD033: Inline HTML (Sometimes necessary for diagrams or badges)
-        args: ["--disable", "MD013", "MD033", "--fix"]
+        args: ["--disable", "MD013", "MD033", "MD060", "--fix"]
