@@ -1,0 +1,22 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "bookworm",
+    "charliermarsh",
+    "devcontainers",
+    "hatchling",
+    "markdownlint",
+    "mkdocs",
+    "pymdown",
+    "pyright",
+    "redhat",
+    "streetsidesoftware",
+    "tamasfe"
+  ],
+  "ignorePaths": [
+    ".venv",
+    "uv.lock",
+    "node_modules"
+  ]
+}
