@@ -7,14 +7,14 @@ Thank you for your interest in improving these engineering standards!
 ### Small Changes (typos, clarifications)
 
 1. Fork the repository
-2. Make your changes
-3. Submit a PR
+1. Make your changes
+1. Submit a PR
 
 ### New Standards or Major Changes
 
 1. **Open an Issue first** to discuss the proposal
-2. Wait for feedback before investing significant time
-3. Submit a PR referencing the issue
+1. Wait for feedback before investing significant time
+1. Submit a PR referencing the issue
 
 ## Local Development
 
