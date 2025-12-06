@@ -29,12 +29,10 @@ repos:
         args: ["--fix"]
 
   # Pyright: Static type checker for Python
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.19.0
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.407
     hooks:
-      - id: mypy
-        additional_dependencies: []
-        args: [--ignore-missing-imports]
+      - id: pyright
 
   # Detect secrets to prevent accidental credential commits
   - repo: https://github.com/Yelp/detect-secrets
