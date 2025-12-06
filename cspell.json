@@ -22,7 +22,14 @@
     "tamasfe",
     "tasklist",
     "venv",
-    "Landero"
+    "Landero",
+    "mkdn",
+    "mdwn",
+    "adoc",
+    "webp",
+    "dylib",
+    "Lockfiles",
+    "Pipfile"
   ],
   "ignorePaths": [
     ".venv",
