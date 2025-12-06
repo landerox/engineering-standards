@@ -11,23 +11,40 @@ This repository contains curated technical standards and best practices for soft
 - Technology Radar and GCP services reference
 - CI/CD, Infrastructure, Data Platform, and AI/ML guidelines (coming soon)
 
-## Documentation
+## Quick Start
 
-📖 **[View full documentation](docs/index.md)** or run locally:
+### Option 1: Dev Container (recommended)
+
+Requires [Docker](https://www.docker.com/) and [VS Code](https://code.visualstudio.com/) with the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+
+```bash
+git clone https://github.com/landerox/engineering-standards.git
+code engineering-standards
+```
+
+When VS Code opens, click **"Reopen in Container"** when prompted. The container will automatically install all dependencies and configure pre-commit hooks.
+
+### Option 2: Local Setup
+
+Requires [uv](https://docs.astral.sh/uv/) package manager.
+
+```bash
+git clone https://github.com/landerox/engineering-standards.git
+cd engineering-standards
+uv sync
+```
+
+### Run Documentation Locally
 
 ```bash
 uv run mkdocs serve
 ```
 
-## Quick Start
+Then open [http://localhost:8000](http://localhost:8000) in your browser.
 
-```bash
-# Clone and open in VS Code Dev Container
-git clone https://github.com/landerox/engineering-standards.git
-code engineering-standards
-```
+## Documentation
 
-The Dev Container will automatically install dependencies and configure pre-commit hooks.
+📖 **[View published documentation](https://landerox.github.io/engineering-standards/)**
 
 ## Project Info
 
@@ -40,9 +57,9 @@ The Dev Container will automatically install dependencies and configure pre-comm
 ## Contributing
 
 This is a personal knowledge base, but suggestions are welcome via issues.
+Please open an issue for any additions or improvements you would like to see.
+Contributions via pull requests are not accepted at this time.
 
 ## License
 
-This project is licensed under the MIT License.
-
-See [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
