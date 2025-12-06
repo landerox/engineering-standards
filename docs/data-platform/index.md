@@ -1,6 +1,8 @@
 # Data Platform
 
-## Coming Soon
+## Overview
+
+Standards and guidelines for databases, analytics, data warehousing, and data orchestration.
 
 ---
 
