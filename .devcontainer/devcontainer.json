@@ -13,33 +13,30 @@
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python",
         "editor.formatOnSave": true,
-        "[markdown]": {
-          "editor.defaultFormatter": "yzhang.markdown-all-in-one",
-          "editor.wordWrap": "on"
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+          }
         },
-        "cSpell.words": [
-          "charliermarsh",
-          "tamasfe",
-          "yzhang",
-          "Anson",
-          "devcontainers",
-          "bookworm",
-          "markdownlint",
-          "streetsidesoftware",
-          "redhat"
-        ]
+        "[markdown]": {
+          "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+          "editor.wordWrap": "on"
+        }
       },
       "extensions": [
         "ms-python.python",
         "charliermarsh.ruff",
+        "ms-pyright.pyright",
         "tamasfe.even-better-toml",
-        "yzhang.markdown-all-in-one",
         "DavidAnson.vscode-markdownlint",
         "streetsidesoftware.code-spell-checker",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "EditorConfig.EditorConfig"
       ]
     }
   },
-  "postCreateCommand": "pip install uv && uv sync && uv run pre-commit install",
+  "postCreateCommand": "pip install uv && uv sync --group dev && uv run pre-commit install",
   "remoteUser": "vscode"
 }
