@@ -1,0 +1,193 @@
+# ============================================================================
+# Git Attributes Configuration
+# ============================================================================
+# This file ensures consistent handling of files across all platforms
+# (Windows, macOS, Linux) and prevents spurious diffs caused by line ending
+# differences.
+#
+# See: https://git-scm.com/docs/gitattributes
+# ============================================================================
+
+# Auto detect text files and normalize line endings to LF
+* text=auto
+
+# ============================================================================
+# SOURCE CODE - Python, YAML, JSON, etc. (Always LF)
+# ============================================================================
+*.py text eol=lf
+*.pyx text eol=lf
+*.pyi text eol=lf
+
+# Configuration files
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+*.ini text eol=lf
+*.cfg text eol=lf
+*.conf text eol=lf
+
+# Data & serialization
+*.json text eol=lf
+*.jsonc text eol=lf
+*.ndjson text eol=lf
+*.csv text eol=lf
+*.tsv text eol=lf
+*.xml text eol=lf
+
+# Shell scripts (Always LF)
+*.sh text eol=lf
+*.bash text eol=lf
+*.zsh text eol=lf
+*.fish text eol=lf
+
+# ============================================================================
+# DOCUMENTATION
+# ============================================================================
+*.md text eol=lf diff=markdown
+*.markdown text eol=lf diff=markdown
+*.mdown text eol=lf
+*.mkdn text eol=lf
+*.mdwn text eol=lf
+*.rst text eol=lf
+*.adoc text eol=lf
+*.txt text eol=lf
+
+# ============================================================================
+# WEB & FRONTEND (Always LF)
+# ============================================================================
+*.html text eol=lf
+*.htm text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.sass text eol=lf
+*.less text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.vue text eol=lf
+*.svelte text eol=lf
+
+# ============================================================================
+# DOCKER & INFRASTRUCTURE (Always LF)
+# ============================================================================
+Dockerfile text eol=lf
+Dockerfile.* text eol=lf
+docker-compose.yml text eol=lf
+docker-compose.yaml text eol=lf
+.dockerignore text eol=lf
+.editorconfig text eol=lf
+
+# ============================================================================
+# GIT & PROJECT FILES (Always LF)
+# ============================================================================
+.gitattributes text eol=lf
+.gitignore text eol=lf
+.gitmodules text eol=lf
+.mailmap text eol=lf
+.env.example text eol=lf
+.env.local text eol=lf export-ignore
+
+# ============================================================================
+# CI/CD & AUTOMATION (Always LF)
+# ============================================================================
+.github/** text eol=lf
+.gitlab-ci.yml text eol=lf
+.travis.yml text eol=lf
+Makefile text eol=lf
+*.mk text eol=lf
+.pre-commit-config.yaml text eol=lf
+
+# ============================================================================
+# WINDOWS-SPECIFIC (Keep CRLF for Windows batch scripts)
+# ============================================================================
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.com text eol=crlf
+*.exe binary
+*.ps1 text eol=crlf
+*.ps2 text eol=crlf
+*.psc1 text eol=crlf
+*.psc2 text eol=crlf
+
+# ============================================================================
+# BINARY FILES (No conversion, no diffs)
+# ============================================================================
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.flv binary
+*.fla binary
+*.webp binary
+*.svg binary
+
+# Fonts
+*.otf binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# Archives
+*.zip binary
+*.tar binary
+*.tar.gz binary
+*.gz binary
+*.rar binary
+*.7z binary
+*.bzip2 binary
+*.xz binary
+
+# Binaries & Executables
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+*.bin binary
+*.class binary
+*.o binary
+
+# Documents
+*.pdf binary
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+*.ppt binary
+*.pptx binary
+
+# Database
+*.db binary
+*.sqlite binary
+*.sqlite3 binary
+
+# ============================================================================
+# SPECIAL HANDLING
+# ============================================================================
+# Windows Zone Identifier (mark files as "downloaded from internet")
+:Zone.Identifier export-ignore
+*.Zone.Identifier export-ignore
+
+# Lockfiles (important to track exactly)
+*.lock text eol=lf
+uv.lock text eol=lf
+package-lock.json text eol=lf
+yarn.lock text eol=lf
+Pipfile.lock text eol=lf
+
+# ============================================================================
+# VENDORED CODE (track exactly as-is)
+# ============================================================================
+vendor/** binary
+node_modules/** binary
+venv/** binary
+.venv/** binary
+
+# ============================================================================
+# END OF .gitattributes
+# ============================================================================
