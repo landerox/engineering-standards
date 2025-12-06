@@ -9,6 +9,7 @@ repos:
       - id: check-yaml                 # Checks YAML syntax (Vital for mkdocs.yml)
       - id: check-toml                 # Checks TOML syntax (Vital for pyproject.toml)
       - id: check-added-large-files    # Prevents accidental commit of large binaries
+        args: ['--maxkb=1000']         # Set max file size to 1000KB
       - id: check-case-conflict        # Checks for files with same name but different case
       - id: check-merge-conflict       # Checks for unresolved merge conflict markers
 
@@ -25,7 +26,20 @@ repos:
     rev: v0.46.0
     hooks:
       - id: markdownlint
-        # We ignore some strict rules to allow flexibility
-        # MD013: Line length (MkDocs handles long lines well)
-        # MD033: Inline HTML (Sometimes necessary for diagrams or badges)
-        args: ["--disable", "MD013", "MD033", "MD060", "--fix"]
+        args: ["--fix"]
+
+  # Pyright: Static type checker for Python
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.19.0
+    hooks:
+      - id: mypy
+        additional_dependencies: []
+        args: [--ignore-missing-imports]
+
+  # Detect secrets to prevent accidental credential commits
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: .secrets.baseline
