@@ -41,16 +41,16 @@ theme:
 nav:
   - Home: index.md
   - Backend:
-    - backend/index.md
-    - Python Development Standards: backend/python-development-standards.md
+      - backend/index.md
+      - Python Development Standards: backend/python-development-standards.md
   - Data Platform:
-    - data-platform/index.md
+      - data-platform/index.md
   - AI & ML:
-    - ai-ml/index.md
+      - ai-ml/index.md
   - Infrastructure:
-    - infrastructure/index.md
+      - infrastructure/index.md
   - CI/CD:
-    - cicd/index.md
+      - cicd/index.md
 
 markdown_extensions:
   - tables

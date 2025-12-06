@@ -4,19 +4,28 @@
   "words": [
     "bookworm",
     "charliermarsh",
+    "cicd",
     "devcontainers",
+    "fontawesome",
     "hatchling",
+    "inlinehilite",
+    "linenums",
     "markdownlint",
     "mkdocs",
     "pymdown",
+    "pymdownx",
+    "pygments",
     "pyright",
     "redhat",
     "streetsidesoftware",
-    "tamasfe"
+    "superfences",
+    "tamasfe",
+    "tasklist",
+    "venv",
+    "Landero"
   ],
   "ignorePaths": [
     ".venv",
-    "uv.lock",
-    "node_modules"
+    "uv.lock"
   ]
 }
