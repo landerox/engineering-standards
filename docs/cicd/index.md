@@ -1,6 +1,8 @@
 # CI/CD & DevOps
 
-## Coming Soon
+## Overview
+
+Standards and guidelines for continuous integration, continuous deployment, and DevOps practices.
 
 ---
 
