@@ -48,17 +48,25 @@ Then open [http://localhost:8000](http://localhost:8000) in your browser.
 
 ## Project Info
 
-| Resource                  | Description                  |
-| ------------------------- | ---------------------------- |
-| [CHANGELOG](CHANGELOG.md) | Version history and releases |
-| [LICENSE](LICENSE)        | MIT License                  |
-| [CODEOWNERS](CODEOWNERS)  | Repository ownership         |
+| Resource                              | Description                  |
+| ------------------------------------- | ---------------------------- |
+| [CHANGELOG](CHANGELOG.md)             | Version history and releases |
+| [CONTRIBUTING](CONTRIBUTING.md)       | How to contribute            |
+| [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) | Community guidelines         |
+| [SECURITY](SECURITY.md)               | Security policy              |
+| [LICENSE](LICENSE)                    | MIT License                  |
 
 ## Contributing
 
 Contributions are welcome! Whether it's fixing typos, improving clarity, or proposing new standards.
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a pull request.
+
+This project follows a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you agree to uphold these standards.
+
+## Security
+
+To report security vulnerabilities, please see [SECURITY.md](SECURITY.md). Do not open public issues for security concerns.
 
 ## License
 

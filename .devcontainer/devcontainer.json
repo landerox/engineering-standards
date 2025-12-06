@@ -33,7 +33,9 @@
         "DavidAnson.vscode-markdownlint",
         "streetsidesoftware.code-spell-checker",
         "redhat.vscode-yaml",
-        "EditorConfig.EditorConfig"
+        "EditorConfig.EditorConfig",
+        "bierner.markdown-mermaid",
+        "eamodio.gitlens"
       ]
     }
   },

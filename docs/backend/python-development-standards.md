@@ -9,33 +9,33 @@
 ## Table of Contents
 
 1. [Philosophy and Principles](#1-philosophy-and-principles)
-2. [Core Technology Stack](#2-core-technology-stack)
-3. [Tools by Domain](#3-tools-by-domain)
-4. [Project Structure](#4-project-structure)
-5. [Dependency Management](#5-dependency-management)
-6. [Code Quality](#6-code-quality)
-7. [Type Checking](#7-type-checking)
-8. [Testing](#8-testing)
-9. [Security](#9-security)
-10. [Documentation](#10-documentation)
-11. [Git and Version Control](#11-git-and-version-control)
-12. [CI/CD](#12-cicd)
-13. [Docker and Containers](#13-docker-and-containers)
-14. [Application Configuration](#14-application-configuration)
-15. [Logging and Observability](#15-logging-and-observability)
-16. [Patterns and Best Practices](#16-patterns-and-best-practices)
-17. [Databases](#17-databases)
-18. [APIs and Web Services](#18-apis-and-web-services)
-19. [Caching](#19-caching)
-20. [Background Tasks and Scheduling](#20-background-tasks-and-scheduling)
-21. [Data Processing](#21-data-processing)
-22. [Messaging and Events](#22-messaging-and-events)
-23. [CLI and Scripts](#23-cli-and-scripts)
-24. [Local Development](#24-local-development)
-25. [Environment Management](#25-environment-management)
-26. [Monorepo and Workspaces](#26-monorepo-and-workspaces)
-27. [Use Cases by Project Type](#27-use-cases-by-project-type)
-28. [New Project Checklist](#28-new-project-checklist)
+1. [Core Technology Stack](#2-core-technology-stack)
+1. [Tools by Domain](#3-tools-by-domain)
+1. [Project Structure](#4-project-structure)
+1. [Dependency Management](#5-dependency-management)
+1. [Code Quality](#6-code-quality)
+1. [Type Checking](#7-type-checking)
+1. [Testing](#8-testing)
+1. [Security](#9-security)
+1. [Documentation](#10-documentation)
+1. [Git and Version Control](#11-git-and-version-control)
+1. [CI/CD](#12-cicd)
+1. [Docker and Containers](#13-docker-and-containers)
+1. [Application Configuration](#14-application-configuration)
+1. [Logging and Observability](#15-logging-and-observability)
+1. [Patterns and Best Practices](#16-patterns-and-best-practices)
+1. [Databases](#17-databases)
+1. [APIs and Web Services](#18-apis-and-web-services)
+1. [Caching](#19-caching)
+1. [Background Tasks and Scheduling](#20-background-tasks-and-scheduling)
+1. [Data Processing](#21-data-processing)
+1. [Messaging and Events](#22-messaging-and-events)
+1. [CLI and Scripts](#23-cli-and-scripts)
+1. [Local Development](#24-local-development)
+1. [Environment Management](#25-environment-management)
+1. [Monorepo and Workspaces](#26-monorepo-and-workspaces)
+1. [Use Cases by Project Type](#27-use-cases-by-project-type)
+1. [New Project Checklist](#28-new-project-checklist)
 
 ---
 
@@ -1942,12 +1942,12 @@ Define common commands in Justfile:
 ### 24.3 Recommended Workflow
 
 1. Clone repository
-2. Run `just install` (or `uv sync --all-extras && uv run pre-commit install`)
-3. Create branch for feature/fix
-4. Develop with `just dev`
-5. Verify with `just check`
-6. Commit (pre-commit hooks run automatically)
-7. Push and create PR
+1. Run `just install` (or `uv sync --all-extras && uv run pre-commit install`)
+1. Create branch for feature/fix
+1. Develop with `just dev`
+1. Verify with `just check`
+1. Commit (pre-commit hooks run automatically)
+1. Push and create PR
 
 ---
 
