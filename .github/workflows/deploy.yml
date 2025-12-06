@@ -7,7 +7,7 @@ on:
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
-      - '.github/workflows/docs.yml'
+      - '.github/workflows/deploy.yml'
       - 'pyproject.toml'
       - 'uv.lock'
   pull_request:
@@ -16,7 +16,7 @@ on:
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
-      - '.github/workflows/docs.yml'
+      - '.github/workflows/deploy.yml'
       - 'pyproject.toml'
       - 'uv.lock'
   workflow_dispatch:
@@ -28,7 +28,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -36,6 +36,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       # 1. Install uv (with cache enabled for speed)
       - name: Install uv
@@ -44,27 +46,19 @@ jobs:
           version: "latest"
           enable-cache: true
 
-      # 2. Setup Python
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      # 3. Setup Pages
+      # 2. Setup Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 4. Install dependencies
+      # 3. Install dependencies
       - name: Install dependencies
-        run: |
-          uv sync --frozen
+        run: uv sync --frozen
 
-      # 5. Build website
+      # 4. Build documentation
       - name: Build documentation
-        run: |
-          uv run mkdocs build --strict
+        run: uv run mkdocs build --strict
 
-      # 6. Upload artifact
+      # 5. Upload artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

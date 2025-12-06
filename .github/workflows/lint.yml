@@ -1,0 +1,39 @@
+name: Lint and Format
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 1. Install uv (with cache enabled for speed)
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: "latest"
+          enable-cache: true
+
+      # 2. Install dependencies
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      # 3. Run linter (catches code issues and style violations)
+      - name: Run Ruff linter
+        run: uv run ruff check .
+
+      # 4. Run formatter (ensures consistent code style)
+      - name: Run Ruff formatter
+        run: uv run ruff format --check .
