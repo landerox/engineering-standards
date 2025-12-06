@@ -26,7 +26,7 @@ When VS Code opens, click **"Reopen in Container"** when prompted. The container
 
 ### Option 2: Local Setup
 
-Requires [uv](https://docs.astral.sh/uv/) package manager.
+Requires [uv](https://docs.astral.sh/uv/getting-started/installation/) package manager.
 
 ```bash
 git clone https://github.com/landerox/engineering-standards.git
@@ -56,9 +56,9 @@ Then open [http://localhost:8000](http://localhost:8000) in your browser.
 
 ## Contributing
 
-This is a personal knowledge base, but suggestions are welcome via issues.
-Please open an issue for any additions or improvements you would like to see.
-Contributions via pull requests are not accepted at this time.
+Contributions are welcome! Whether it's fixing typos, improving clarity, or proposing new standards.
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a pull request.
 
 ## License
 
