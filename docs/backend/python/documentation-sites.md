@@ -40,7 +40,7 @@ MkDocs + Material is the recommended choice for Python teams. For other scenario
 |------------|---------|---------|---------------|
 | [MkDocs](https://www.mkdocs.org/) | - | Static site generator for Markdown | [Getting Started](https://www.mkdocs.org/getting-started/) |
 | [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) | `>=9.7.0` | Theme, components, and extensions | [Setup Guide](https://squidfunk.github.io/mkdocs-material/setup/) |
-| [PyMdown Extensions](https://facelessuser.github.io/pymdown-extensions/) | `>=10.17.2` | Extended Markdown syntax | [Reference](https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/) |
+| [PyMdown Extensions](https://facelessuser.github.io/pymdown-extensions/) | `>=10.18` | Extended Markdown syntax | [Reference](https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/) |
 
 ## Plugins
 
@@ -50,6 +50,7 @@ MkDocs + Material is the recommended choice for Python teams. For other scenario
 | [mkdocs-redirects](https://github.com/mkdocs/mkdocs-redirects) | `>=1.2.2` | Handles URL redirects when restructuring docs | [GitHub](https://github.com/mkdocs/mkdocs-redirects) |
 | [mkdocs-git-revision-date-localized](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin) | `>=1.5.0` | Displays last updated date from git history | [GitHub](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin) |
 | [mkdocs-awesome-pages](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin) | `>=2.10.1` | Simplifies navigation configuration | [GitHub](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin) |
+| [mkdocs-glightbox](https://github.com/blueswen/mkdocs-glightbox) | `>=0.5.2` | Lightbox functionality for images and diagrams | [GitHub](https://github.com/blueswen/mkdocs-glightbox) |
 
 ### Blog Plugin
 
