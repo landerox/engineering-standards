@@ -1,7 +1,6 @@
-# General / Core
+# :material-cog: General / Core
 
 > **Version:** 1.0.0
-> **Last Updated:** December 2025
 > **Applies to:** Python 3.12+
 
 Base standards that apply to **all** Python project types. Each project type (Web Service, Package, Data Job, Documentation Site) extends these standards with specific tools.

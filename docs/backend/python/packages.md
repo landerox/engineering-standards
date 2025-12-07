@@ -1,7 +1,6 @@
-# Packages
+# :material-package-variant: Packages
 
 > **Version:** 1.0.0
-> **Last Updated:** December 2025
 > **Extends:** [General / Core](general-core.md)
 > **Template:** [template-python-package](https://github.com/landerox/template-python-package)
 

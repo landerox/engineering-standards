@@ -1,4 +1,4 @@
-# Engineering Standards
+# :material-home: Home
 
 > **The central hub for development standards, architectural patterns, and technical guidelines.**
 
