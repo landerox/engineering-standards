@@ -42,15 +42,12 @@ nav:
   - Home: index.md
   - Backend:
       - backend/index.md
-      - Python Development Standards: backend/python-development-standards.md
-  - Data Platform:
-      - data-platform/index.md
-  - AI & ML:
-      - ai-ml/index.md
-  - Infrastructure:
-      - infrastructure/index.md
-  - CI/CD:
-      - cicd/index.md
+      - Python:
+          - General Standards: backend/python/general-standards.md
+          - Web Service: backend/python/web-service.md
+          - Python Package: backend/python/python-package.md
+          - Data Job: backend/python/data-job.md
+          - Documentation Site: backend/python/documentation-site.md
 
 markdown_extensions:
   - tables
