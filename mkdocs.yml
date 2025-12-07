@@ -3,7 +3,6 @@ site_description: Personal engineering knowledge base - Standards, Golden Paths,
 site_author: Fernando Landero
 repo_url: https://github.com/landerox/engineering-standards
 repo_name: engineering-standards
-
 theme:
   name: material
   language: en
@@ -37,7 +36,6 @@ theme:
     - toc.follow
   icon:
     repo: fontawesome/brands/github
-
 markdown_extensions:
   - tables
   - admonition
@@ -57,7 +55,8 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.mark
-  - pymdownx.critic
+  - pymdownx.critic:
+      mode: accept
   - pymdownx.caret
   - pymdownx.keys
   - pymdownx.tilde
@@ -71,19 +70,18 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - footnotes
-
 plugins:
   - search:
       lang: en
+  - awesome-pages
+  - glightbox
   - minify:
       minify_html: true
-  - awesome-pages
   - git-revision-date-localized:
       type: date
       fallback_to_build_date: true
   - redirects:
       redirect_maps: {}
-
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -91,6 +89,5 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/landerox
   generator: false
-
 extra_css:
   - assets/stylesheets/extra.css
