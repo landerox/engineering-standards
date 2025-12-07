@@ -1,8 +1,8 @@
-# Python Data Job Standards
+# Data Jobs
 
 > **Version:** 1.0.0
 > **Last Updated:** December 2025
-> **Extends:** [General Standards](general-standards.md)
+> **Extends:** [General / Core](general-core.md)
 > **Template:** [template-python-data-job](https://github.com/landerox/template-python-data-job)
 
 Standards for building ETL pipelines, batch processing jobs, scheduled tasks, and event-driven workers. Includes Cloud Run Jobs deployment and data processing best practices.
@@ -1224,7 +1224,7 @@ docker run my-job backfill --start=2024-01-01 --end=2024-01-31
 
 ## Additional Files
 
-Beyond [General Standards](general-standards.md), data jobs include:
+Beyond [General / Core](general-core.md), data jobs include:
 
 | File | Purpose |
 |------|---------|
@@ -1255,13 +1255,3 @@ Beyond [General Standards](general-standards.md), data jobs include:
 | Local dev | `gcloud auth application-default login` |
 | Cloud Run Jobs | Automatic (service account) |
 | CI/CD | Workload Identity or SA key |
-
----
-
-## Related Standards
-
-| Standard | Description |
-|----------|-------------|
-| [General Standards](general-standards.md) | Base standards (required) |
-| [Web Service](web-service.md) | If job exposes HTTP endpoints |
-| [Python Package](python-package.md) | If job logic is packaged as library |

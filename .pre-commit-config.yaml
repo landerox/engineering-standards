@@ -4,21 +4,22 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
-      - id: trailing-whitespace        # Trims trailing whitespace
-      - id: end-of-file-fixer          # Ensures files end with a newline
-      - id: check-yaml                 # Checks YAML syntax (Vital for mkdocs.yml)
-      - id: check-toml                 # Checks TOML syntax (Vital for pyproject.toml)
-      - id: check-added-large-files    # Prevents accidental commit of large binaries
-        args: ['--maxkb=1000']         # Set max file size to 1000KB
-      - id: check-case-conflict        # Checks for files with same name but different case
-      - id: check-merge-conflict       # Checks for unresolved merge conflict markers
+      - id: trailing-whitespace # Trims trailing whitespace
+      - id: end-of-file-fixer # Ensures files end with a newline
+      - id: check-yaml # Checks YAML syntax (Vital for mkdocs.yml)
+        args: [--unsafe]
+      - id: check-toml # Checks TOML syntax (Vital for pyproject.toml)
+      - id: check-added-large-files # Prevents accidental commit of large binaries
+        args: ["--maxkb=1000"] # Set max file size to 1000KB
+      - id: check-case-conflict # Checks for files with same name but different case
+      - id: check-merge-conflict # Checks for unresolved merge conflict markers
 
   # Python Linter and Formatter (Ruff) - Validates scripts if any are added
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.8
     hooks:
       - id: ruff
-        args: [ --fix ]
+        args: [--fix]
       - id: ruff-format
 
   # Markdown Validation
@@ -39,5 +40,5 @@ repos:
     rev: v1.5.0
     hooks:
       - id: detect-secrets
-        args: ['--baseline', '.secrets.baseline']
+        args: ["--baseline", ".secrets.baseline"]
         exclude: .secrets.baseline

@@ -61,7 +61,11 @@
     "fonts",
     "allow",
     "Sensitive",
-    "pyupgrade"
+    "pyupgrade",
+    "pymdownx",
+    "superfences",
+    "inlinehilite",
+    "linenums"
   ],
   "ignoreWords": [
     "nd",

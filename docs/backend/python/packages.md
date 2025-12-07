@@ -1,8 +1,8 @@
-# Python Package Standards
+# Packages
 
 > **Version:** 1.0.0
 > **Last Updated:** December 2025
-> **Extends:** [General Standards](general-standards.md)
+> **Extends:** [General / Core](general-core.md)
 > **Template:** [template-python-package](https://github.com/landerox/template-python-package)
 
 Standards for building Python libraries, CLI tools, and distributable packages. Includes matrix testing, build configuration, and publishing to private registries.
@@ -532,20 +532,20 @@ Use Hypothesis for functions with complex input domains:
 ```toml
 [project.optional-dependencies]
 cli = [
-    "typer>=0.9",
-    "rich>=13.0",
+    "typer>=0.20.0",
+    "rich>=14.2.0",
 ]
 dev = [
-    "pytest>=8.0",
-    "pytest-cov>=4.0",
-    "hypothesis>=6.0",
-    "ruff>=0.4",
-    "pyright>=1.1",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "hypothesis>=6.148.7",
+    "ruff>=0.14.8",
+    "pyright>=1.1.407",
 ]
 docs = [
-    "mkdocs>=1.5",
-    "mkdocs-material>=9.0",
-    "mkdocstrings[python]>=0.24",
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.7.0",
+    "mkdocstrings-python>=2.0.1",
 ]
 all = [
     "mypackage[cli,docs]",
@@ -568,9 +568,9 @@ If your library optionally integrates with heavy dependencies:
 
 ```toml
 [project.optional-dependencies]
-pandas = ["pandas>=2.0"]
-polars = ["polars>=0.20"]
-numpy = ["numpy>=1.24"]
+pandas = ["pandas>=2.3.3"]
+polars = ["polars>=1.35.2"]
+numpy = ["numpy>=2.3.5"]
 ```
 
 This lets users install only what they need:
@@ -852,7 +852,7 @@ url = "https://pypi.org/simple/"
 
 ## Additional Files
 
-Beyond [General Standards](general-standards.md), packages include:
+Beyond [General / Core](general-core.md), packages include:
 
 | File | Purpose |
 |------|---------|
@@ -891,12 +891,3 @@ Beyond [General Standards](general-standards.md), packages include:
 | Loose version bounds | `>=1.0,<3` not `==1.2.3` |
 | Optional dependencies | Heavy deps as extras |
 | No upper bounds (usually) | Allow newer versions |
-
----
-
-## Related Standards
-
-| Standard | Description |
-|----------|-------------|
-| [General Standards](general-standards.md) | Base standards (required) |
-| [Documentation Site](documentation-site.md) | For package documentation |

@@ -1,4 +1,4 @@
-# Python General Standards
+# General / Core
 
 > **Version:** 1.0.0
 > **Last Updated:** December 2025
@@ -437,14 +437,3 @@ Follow [Keep a Changelog](https://keepachangelog.com/) format:
 - Instant onboarding (just open in VS Code)
 - Pre-installed extensions and configurations
 - Host system isolation
-
----
-
-## Related Templates
-
-| Project Type | Template | Documentation |
-|--------------|----------|---------------|
-| Web Service (API/Web) | [template-python-web-service](https://github.com/landerox/template-python-web-service) | [web-service.md](web-service.md) |
-| Python Package (Lib/CLI) | [template-python-package](https://github.com/landerox/template-python-package) | [python-package.md](python-package.md) |
-| Data Job (ETL/Worker) | [template-python-data-job](https://github.com/landerox/template-python-data-job) | [data-job.md](data-job.md) |
-| Documentation Site | [template-mkdocs](https://github.com/landerox/template-mkdocs) | [documentation-site.md](documentation-site.md) |

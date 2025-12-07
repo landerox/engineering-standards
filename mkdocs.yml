@@ -38,17 +38,6 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
-nav:
-  - Home: index.md
-  - Backend:
-      - backend/index.md
-      - Python:
-          - General Standards: backend/python/general-standards.md
-          - Web Service: backend/python/web-service.md
-          - Python Package: backend/python/python-package.md
-          - Data Job: backend/python/data-job.md
-          - Documentation Site: backend/python/documentation-site.md
-
 markdown_extensions:
   - tables
   - admonition
@@ -58,7 +47,11 @@ markdown_extensions:
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tasklist:
@@ -68,6 +61,9 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.keys
   - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - toc:
       permalink: true
       toc_depth: 3
@@ -81,6 +77,12 @@ plugins:
       lang: en
   - minify:
       minify_html: true
+  - awesome-pages
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: true
+  - redirects:
+      redirect_maps: {}
 
 extra:
   social:
