@@ -1,20 +1,16 @@
-# Backend
+# :material-server: Backend
 
-## Overview
-
-Standards and guidelines for backend development, covering Python best practices, API design, and service architecture.
+> **Standards and guidelines for backend development, covering Python best practices, API design, and service architecture.**
 
 ---
 
-## Python Standards
-
-### General
+## General
 
 | Standard | Description |
 |----------|-------------|
 | :material-cog: [General / Core](python/general-core.md) | Base standards for all Python projects: tooling, code quality, testing, security, Git flow |
 
-### By Project Type
+## By Project Type
 
 | Standard | Description | Template |
 |----------|-------------|----------|

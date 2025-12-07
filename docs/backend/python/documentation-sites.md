@@ -1,7 +1,6 @@
-# Documentation Sites
+# :material-file-document: Documentation Sites
 
 > **Version:** 1.0.0
-> **Last Updated:** December 2025
 > **Extends:** [General / Core](general-core.md)
 > **Template:** [template-mkdocs](https://github.com/landerox/template-mkdocs)
 

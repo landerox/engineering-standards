@@ -1,7 +1,6 @@
-# Web Services
+# :material-api: Web Services
 
 > **Version:** 1.0.0
-> **Last Updated:** December 2025
 > **Extends:** [General / Core](general-core.md)
 > **Template:** [template-python-web-service](https://github.com/landerox/template-python-web-service)
 
