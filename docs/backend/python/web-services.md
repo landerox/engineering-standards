@@ -1,8 +1,8 @@
-# Python Web Service Standards
+# Web Services
 
 > **Version:** 1.0.0
 > **Last Updated:** December 2025
-> **Extends:** [General Standards](general-standards.md)
+> **Extends:** [General / Core](general-core.md)
 > **Template:** [template-python-web-service](https://github.com/landerox/template-python-web-service)
 
 Standards for building APIs, microservices, and web applications. Includes Docker containerization, Cloud Run deployment, and observability.
@@ -629,7 +629,7 @@ tests/
 
 ## Additional Files
 
-Beyond [General Standards](general-standards.md), web services include:
+Beyond [General / Core](general-core.md), web services include:
 
 | File | Purpose |
 |------|---------|
@@ -796,12 +796,3 @@ Beyond [General Standards](general-standards.md), web services include:
 | CPU-bound tasks | Cloud Run Jobs | multiprocessing in API |
 | Massive data | Dataflow | ThreadPoolExecutor |
 | I/O-bound | async/await | threading |
-
----
-
-## Related Standards
-
-| Standard | Description |
-|----------|-------------|
-| [General Standards](general-standards.md) | Base standards (required) |
-| [Data Job](data-job.md) | For background processing needs |

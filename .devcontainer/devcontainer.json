@@ -23,6 +23,18 @@
         "[markdown]": {
           "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
           "editor.wordWrap": "on"
+        },
+        "yaml.customTags": [
+          "!!python/name:pymdownx.superfences.fence_code_format",
+          "!!python/name:material.extensions.emoji.twemoji",
+          "!!python/name:material.extensions.emoji.to_svg"
+        ],
+        "yaml.validate": true,
+        "[yaml]": {
+          "editor.defaultFormatter": "redhat.vscode-yaml"
+        },
+        "files.associations": {
+          "mkdocs.yml": "yaml"
         }
       },
       "extensions": [
