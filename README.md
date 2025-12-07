@@ -1,15 +1,17 @@
 # Engineering Standards
 
-Personal knowledge base for engineering standards, architectural patterns, and technical guidelines.
+> **The single source of truth for development standards, architectural patterns, and engineering culture.**
 
-## Overview
+## About This Project
 
-This repository contains curated technical standards and best practices for software development, covering:
+This repository hosts the engineering framework used to ensure consistency, scalability, and maintainability across software projects. It serves as a living knowledge base connecting abstract principles with concrete implementation templates.
 
-- Python development standards (tooling, testing, security, Docker, observability)
-- Architecture patterns for GCP
-- Technology Radar and GCP services reference
-- CI/CD, Infrastructure, Data Platform, and AI/ML guidelines (coming soon)
+## Core Philosophy
+
+* **Simplicity:** Straightforward solutions over unnecessary complexity.
+* **Consistency:** Predictable patterns across all services and jobs.
+* **Automation:** If it can be scripted, it is automated (CI/CD, Linting).
+* **Reproducibility:** Deterministic environments using modern tooling.
 
 ## Quick Start
 

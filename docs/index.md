@@ -1,24 +1,26 @@
 # :material-home: Home
 
-> **The central hub for development standards, architectural patterns, and technical guidelines.**
+Welcome to the **Engineering Standards & Guidelines**.
+
+This platform acts as the **single source of truth** for engineering decisions, architectural patterns, and operational excellence. The goal is to minimize decision fatigue by providing clear **"Golden Paths"** for building robust software.
 
 ---
 
 ## Architecture & Domains
 
+Explore the standards by technical domain:
+
 | Domain | Focus |
 |--------|-------|
 | :material-server: [**Backend**](backend/index.md) | Python ecosystem, API design, Data processing, and Cloud infrastructure. |
+| :material-database-sync: **Data Engineering** | *(Coming Soon)* ETL, pipelines, and data modeling. |
+| :material-cloud: **Infrastructure** | *(Coming Soon)* Terraform, GCP, and security policies. |
 
 ---
 
-## About This Project
+## Core Philosophy
 
-This repository serves as the single source of truth for building software in my projects. It connects abstract **Standards** (the "What" and "Why") with concrete **Templates** (the "How").
-
-### Core Philosophy
-
-The standards defined here are opinionated to ensure speed and maintainability.
+We connect abstract **Standards** (the "What" and "Why") with concrete **Templates** (the "How"), following these principles:
 
 | Principle | Description |
 |-----------|-------------|
