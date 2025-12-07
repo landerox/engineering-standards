@@ -33,7 +33,7 @@ Requires [uv](https://docs.astral.sh/uv/getting-started/installation/) package m
 ```bash
 git clone https://github.com/landerox/engineering-standards.git
 cd engineering-standards
-uv sync
+uv sync --all-groups
 ```
 
 ### Run Documentation Locally
@@ -48,28 +48,18 @@ Then open [http://localhost:8000](http://localhost:8000) in your browser.
 
 📖 **[View published documentation](https://landerox.github.io/engineering-standards/)**
 
-## Project Info
-
-| Resource                              | Description                  |
-| ------------------------------------- | ---------------------------- |
-| [CHANGELOG](CHANGELOG.md)             | Version history and releases |
-| [CONTRIBUTING](CONTRIBUTING.md)       | How to contribute            |
-| [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) | Community guidelines         |
-| [SECURITY](SECURITY.md)               | Security policy              |
-| [LICENSE](LICENSE)                    | MIT License                  |
-
 ## Contributing
 
-Contributions are welcome! Whether it's fixing typos, improving clarity, or proposing new standards.
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) and our [Code of Conduct](CODE_OF_CONDUCT.md) before participating.
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a pull request.
+## Changelog
 
-This project follows a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you agree to uphold these standards.
+See [CHANGELOG.md](CHANGELOG.md) for version history and releases.
 
 ## Security
 
-To report security vulnerabilities, please see [SECURITY.md](SECURITY.md). Do not open public issues for security concerns.
+To report vulnerabilities, see [SECURITY.md](SECURITY.md).
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+MIT License. See [LICENSE](LICENSE).
