@@ -1,28 +1,29 @@
-# Engineering Standards & Guidelines
+# Engineering Standards
 
-Personal knowledge base for engineering standards, architectural patterns, and technical guidelines.
-
----
-
-## Sections
-
-| Section | Description |
-|---------|-------------|
-| [Backend](backend/index.md) | Python standards, API design, service architecture |
+> **The central hub for development standards, architectural patterns, and technical guidelines.**
 
 ---
 
-## About
+## Architecture & Domains
 
-This repository contains opinionated standards and templates for building robust, scalable software. Each standard document describes the **what** and **why**, while companion template repositories provide the **how** with ready-to-use code.
+| Domain | Focus |
+|--------|-------|
+| [**Backend**](backend/index.md) | Python ecosystem, API design, Data processing, and Cloud infrastructure. |
 
-### Philosophy
+---
+
+## About This Project
+
+This repository serves as the single source of truth for building software in my projects. It connects abstract **Standards** (the "What" and "Why") with concrete **Templates** (the "How").
+
+### Core Philosophy
+
+The standards defined here are opinionated to ensure speed and maintainability.
 
 | Principle | Description |
 |-----------|-------------|
-| Simplicity | Straightforward solutions over unnecessary abstractions |
-| Consistency | Same patterns and conventions across all projects |
-| Automation | Repetitive processes are automated |
-| Security by default | Security considerations from the start |
-| Documentation | Clear documentation for all standards and templates |
-| Continuous improvement | Regularly revisited and updated standards |
+| **Simplicity** | Straightforward solutions over unnecessary abstractions. |
+| **Consistency** | Using the same patterns across all projects (CLI, API, or Jobs). |
+| **Automation** | If it can be scripted, it is automated (CI/CD, Linting). |
+| **Security** | Security is configured by default, not added later. |
+| **Reproducibility** | Environments are deterministic (using `uv`, Docker). |
