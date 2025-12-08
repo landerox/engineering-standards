@@ -1,6 +1,7 @@
 site_name: Engineering Standards & Guidelines
 site_description: Personal engineering knowledge base - Standards, Golden Paths, and best practices for building robust, scalable software.
 site_author: Fernando Landero
+site_url: https://landerox.com/engineering-standards/
 repo_url: https://github.com/landerox/engineering-standards
 repo_name: engineering-standards
 theme:
