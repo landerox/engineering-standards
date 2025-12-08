@@ -13,8 +13,6 @@ Explore the standards by technical domain:
 | Domain | Focus |
 |--------|-------|
 | :material-server: [**Backend**](backend/index.md) | Python ecosystem, API design, Data processing, and Cloud infrastructure. |
-| :material-database-sync: **Data Engineering** | *(Coming Soon)* ETL, pipelines, and data modeling. |
-| :material-cloud: **Infrastructure** | *(Coming Soon)* Terraform, GCP, and security policies. |
 
 ---
 

@@ -27,28 +27,28 @@ Standards for building Python libraries, CLI tools, and distributable packages. 
 
 | Tool | Description |
 |------|-------------|
-| **Hatchling** | Modern, fast build backend (PEP 517/518 compliant) |
-| **Hatch** | Project manager that uses Hatchling |
+| [**Hatchling**](https://github.com/pypa/hatch) | Modern, fast build backend (PEP 517/518 compliant) |
+| [**Hatch**](https://github.com/pypa/hatch) | Project manager that uses Hatchling |
 
 ### Matrix Testing
 
 | Tool | Description |
 |------|-------------|
-| **nox** | Test automation across multiple Python versions, pure Python config |
+| [**nox**](https://github.com/wntrblm/nox) | Test automation across multiple Python versions, pure Python config |
 
 ### CLI Framework
 
 | Tool | Description |
 |------|-------------|
-| **Typer** | Modern CLI framework based on type hints |
-| **Rich** | Beautiful terminal output, progress bars, tables |
+| [**Typer**](https://github.com/fastapi/typer) | Modern CLI framework based on type hints |
+| [**Rich**](https://github.com/Textualize/rich) | Beautiful terminal output, progress bars, tables |
 
 ### Distribution
 
 | Tool | Description |
 |------|-------------|
-| **Artifact Registry** | Private Python repository in GCP |
-| **Keyring** | Transparent authentication for private repos |
+| [**Artifact Registry**](https://cloud.google.com/artifact-registry) | Private Python repository in GCP |
+| [**Keyring**](https://github.com/jaraco/keyring) | Transparent authentication for private repos |
 
 ---
 
@@ -319,167 +319,61 @@ src/mypackage/
 
 | Reason | Description |
 |--------|-------------|
-| Dependency isolation | Users who don't need CLI don't install Typer/Rich |
-| Lighter installs | Smaller dependency footprint |
-| Testability | Core testeable without CLI |
-| Reusability | Same core usable as library AND CLI |
-| Flexibility | Different CLIs can wrap the same core |
+| Lighter installs | Users who only need library don't install Typer/Rich |
+| Faster imports | No CLI framework loaded when using as library |
+| Cleaner testing | Test core logic without CLI dependencies |
+| Flexibility | CLI is just one interface to core functionality |
 
 ### Dependency Structure
 
-| Layer | Dependencies | Installed by |
-|-------|--------------|--------------|
-| Core | Minimal (pydantic, etc.) | `pip install mypackage` |
-| CLI | Typer, Rich | `pip install mypackage[cli]` |
-
-### pyproject.toml Pattern
-
 ```toml
 [project]
-name = "mypackage"
 dependencies = [
-    "pydantic>=2.0",  # Core dependencies only
+    # Core dependencies only - what the library needs
+    "httpx>=0.27.0",
+    "pydantic>=2.0.0",
 ]
 
 [project.optional-dependencies]
 cli = [
-    "typer>=0.9",
-    "rich>=13.0",
+    "typer>=0.12.0",
+    "rich>=13.0.0",
 ]
-
-[project.scripts]
-# Entry point only works when [cli] extra is installed
-mypackage = "mypackage.cli:app"
 ```
 
-### Import Pattern
+### Entry Point with Optional CLI
+
+```toml
+[project.scripts]
+mycli = "mypackage.cli:app"
+```
 
 ```python
-# mypackage/__init__.py - Public API (core only)
-from mypackage.core.models import MyModel
+# mypackage/cli.py
+try:
+    import typer
+    from rich.console import Console
+except ImportError:
+    raise ImportError(
+        "CLI dependencies not installed. "
+        "Install with: pip install mypackage[cli]"
+    )
+
 from mypackage.core.processor import process
 
-__all__ = ["MyModel", "process"]
-
-# mypackage/cli.py - CLI layer (imports core)
-import typer
-from mypackage.core.processor import process  # Import from core
-
 app = typer.Typer()
+console = Console()
 
 @app.command()
-def run():
-    result = process()  # Use core functionality
-    ...
+def run(input_file: str):
+    """Process the input file."""
+    result = process(input_file)
+    console.print(result)
 ```
-
-### When to Include CLI
-
-| Include CLI | Don't Include CLI |
-|-------------|-------------------|
-| Developer tools | Pure libraries/SDKs |
-| Data processing utilities | Shared utilities |
-| Build/automation tools | API clients |
-| User-facing applications | Framework components |
-
----
-
-## CLI Development
-
-> **Note:** This section only applies if your package includes a CLI. CLI is optional for most libraries.
-
-### Typer Structure
-
-| Component | Purpose |
-|-----------|---------|
-| `app = typer.Typer()` | Main application |
-| `@app.command()` | Subcommands |
-| `@app.callback()` | Global options, help text |
-| Type hints | Automatic argument parsing |
-
-### CLI Best Practices
-
-| Practice | Description |
-|----------|-------------|
-| Help text | `typer.Option(..., help="...")` for all options |
-| Exit codes | Use `raise typer.Exit(code=1)` for errors |
-| Progress bars | Use Rich for long operations |
-| Confirmation | `typer.confirm()` for destructive actions |
-| Stdin/stdout | Support piping when appropriate |
-
-### Output
-
-| Tool | Use |
-|------|-----|
-| **Rich** | Tables, progress bars, syntax highlighting |
-| `rich.console.Console` | Styled output |
-| `rich.table.Table` | Tabular data |
-| `rich.progress` | Progress bars |
-
----
-
-## Matrix Testing with nox
-
-### Why nox
-
-| Benefit | Description |
-|---------|-------------|
-| Pure Python | No INI files, Python configuration |
-| uv integration | Fast environment creation |
-| Multiple sessions | lint, typecheck, test, docs |
-| Version matrix | Test Python 3.11, 3.12, 3.13 |
-
-### Session Types
-
-| Session | Purpose |
-|---------|---------|
-| `tests` | Run pytest across Python versions |
-| `lint` | Run ruff check and format |
-| `typecheck` | Run pyright |
-| `docs` | Build documentation |
-| `build` | Build wheel and sdist |
-
-### Python Version Support
-
-| Policy | Description |
-|--------|-------------|
-| N and N-1 | Support current and previous Python version |
-| Example | Python 3.12 + 3.11 for 2024/2025 |
-| EOL tracking | Drop versions at Python EOL |
 
 ---
 
 ## Testing
-
-### Strategy
-
-| Test Type | Purpose | Tool |
-|-----------|---------|------|
-| Unit | Test public API, edge cases | pytest |
-| Property-based | Discover edge cases automatically | hypothesis |
-| Doctest | Verify examples in docstrings | pytest --doctest-modules |
-| Matrix | Test across Python versions | nox |
-
-### Testing Tools
-
-| Tool | Purpose |
-|------|---------|
-| **pytest** | Test framework |
-| **pytest-cov** | Coverage reporting |
-| **pytest-xdist** | Parallel test execution |
-| **hypothesis** | Property-based testing |
-| **nox** | Matrix testing across Python versions |
-
-### What to Test
-
-| Test | Description |
-|------|-------------|
-| Public API | All public functions/classes |
-| Edge cases | Empty inputs, None, boundaries |
-| Error handling | Exceptions raised correctly |
-| Type coercion | Input types handled properly |
-| Backward compatibility | No regressions |
-| Docstring examples | All examples work |
 
 ### Test Structure
 
@@ -488,88 +382,93 @@ tests/
 ├── unit/
 │   ├── test_models.py
 │   └── test_processor.py
-├── integration/          # If needed
-├── conftest.py           # Shared fixtures
-└── test_docstrings.py    # Doctest collection
+├── integration/
+│   └── test_api.py
+└── conftest.py
 ```
 
-### Coverage Requirements
+### Matrix Testing with nox
 
-| Metric | Minimum |
-|--------|---------|
-| Line coverage | 90% (higher than web services) |
-| Branch coverage | 85% |
+```python
+# noxfile.py
+import nox
 
-> **Note:** Libraries need higher coverage than applications because they're used by many consumers.
+@nox.session(python=["3.11", "3.12", "3.13"])
+def tests(session):
+    session.install(".[dev]")
+    session.run("pytest", "tests/", "-v")
 
-### Property-Based Testing with Hypothesis
+@nox.session(python="3.12")
+def lint(session):
+    session.install("ruff")
+    session.run("ruff", "check", "src/")
 
-Use Hypothesis for functions with complex input domains:
+@nox.session(python="3.12")
+def typecheck(session):
+    session.install(".[dev]")
+    session.run("pyright", "src/")
+```
 
-| Use Case | Description |
-|----------|-------------|
-| Data transformations | Verify invariants hold for any input |
-| Serialization | `deserialize(serialize(x)) == x` |
-| Validators | Test boundary conditions automatically |
-| Parsers | Fuzz testing with generated inputs |
+### Running nox
+
+```bash
+# Run all sessions
+nox
+
+# Run specific session
+nox -s tests
+
+# Run specific Python version
+nox -s tests-3.12
+
+# List available sessions
+nox -l
+```
 
 ---
 
-## Optional Dependencies (Extras)
+## Optional Dependencies Pattern
 
-### Common Extras Pattern
+### When to Use Optional Dependencies
 
-| Extra | Dependencies | Use Case |
-|-------|--------------|----------|
-| `cli` | typer, rich | Command-line interface |
-| `dev` | pytest, ruff, pyright | Development tools |
-| `docs` | mkdocs, mkdocstrings | Documentation |
-| `all` | All optional deps | Everything |
+| Scenario | Make it Optional |
+|----------|------------------|
+| Heavy libraries (pandas, torch) | Yes |
+| CLI frameworks (typer, click) | Yes |
+| Alternative implementations | Yes |
+| Dev/test tools | Yes (in dev group) |
+| Core functionality | No |
 
-### pyproject.toml Example
+### Example: Multiple Backends
 
 ```toml
 [project.optional-dependencies]
-cli = [
-    "typer>=0.20.0",
-    "rich>=14.2.0",
-]
-dev = [
-    "pytest>=9.0.2",
-    "pytest-cov>=7.0.0",
-    "hypothesis>=6.148.7",
-    "ruff>=0.14.8",
-    "pyright>=1.1.407",
-]
-docs = [
-    "mkdocs>=1.6.1",
-    "mkdocs-material>=9.7.0",
-    "mkdocstrings-python>=2.0.1",
-]
-all = [
-    "mypackage[cli,docs]",
-]
+pandas = ["pandas>=2.0.0"]
+polars = ["polars>=0.20.0"]
+all = ["pandas>=2.0.0", "polars>=0.20.0"]
 ```
 
-### Installation Commands
+```python
+# mypackage/backends/__init__.py
+from typing import TYPE_CHECKING
 
-| Command | What Gets Installed |
-|---------|---------------------|
-| `pip install mypackage` | Core only |
-| `pip install mypackage[cli]` | Core + CLI |
-| `pip install mypackage[dev]` | Core + dev tools |
-| `pip install mypackage[cli,docs]` | Core + CLI + docs |
-| `uv sync --all-extras` | Everything (development) |
+if TYPE_CHECKING:
+    import pandas as pd
+    import polars as pl
 
-### Heavy Dependencies as Extras
+def load_with_pandas(path: str) -> "pd.DataFrame":
+    try:
+        import pandas as pd
+    except ImportError:
+        raise ImportError("Install with: pip install mypackage[pandas]")
+    return pd.read_csv(path)
 
-If your library optionally integrates with heavy dependencies:
-
-```toml
-[project.optional-dependencies]
-pandas = ["pandas>=2.3.3"]
-polars = ["polars>=1.35.2"]
-numpy = ["numpy>=2.3.5"]
+def load_with_polars(path: str) -> "pl.DataFrame":
+    try:
+        import polars as pl
+    except ImportError:
+        raise ImportError("Install with: pip install mypackage[polars]")
+    return pl.read_csv(path)
 ```
 
 This lets users install only what they need:
@@ -586,9 +485,9 @@ pip install mypackage[polars]  # Only if they need Polars integration
 
 | Tool | Purpose |
 |------|---------|
-| **MkDocs** | Documentation site |
-| **mkdocs-material** | Material theme |
-| **mkdocstrings** | Auto-generate API docs from docstrings |
+| [**MkDocs**](https://www.mkdocs.org/) | Documentation site |
+| [**mkdocs-material**](https://squidfunk.github.io/mkdocs-material/) | Material theme |
+| [**mkdocstrings**](https://github.com/mkdocstrings/mkdocstrings) | Auto-generate API docs from docstrings |
 
 ### Documentation Structure
 
@@ -746,16 +645,16 @@ pip install mypackage --index-url https://us-central1-python.pkg.dev/my-project/
 
 | Tool | Description |
 |------|-------------|
-| **devpi** | Full-featured, caching proxy + private packages |
-| **pypiserver** | Minimal, simple private PyPI |
+| [**devpi**](https://github.com/devpi/devpi) | Full-featured, caching proxy + private packages |
+| [**pypiserver**](https://github.com/pypiserver/pypiserver) | Minimal, simple private PyPI |
 
 ### Comparison
 
 | Registry | Public | Private | GCP Integration | Cost |
 |----------|--------|---------|-----------------|------|
-| PyPI | ✅ | ❌ | ❌ | Free |
-| Artifact Registry | ❌ | ✅ | ✅ Native | Pay per use |
-| GitLab Registry | ❌ | ✅ | ❌ | Included |
+| [PyPI](https://pypi.org/) | ✅ | ❌ | ❌ | Free |
+| [Artifact Registry](https://cloud.google.com/artifact-registry) | ❌ | ✅ | ✅ Native | Pay per use |
+| [GitLab Registry](https://docs.gitlab.com/ee/user/packages/pypi_repository/) | ❌ | ✅ | ❌ | Included |
 | devpi | ✅ | ✅ | ❌ | Self-host |
 
 > **Recommendation:** Use **Artifact Registry** for private packages in GCP environments.

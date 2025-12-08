@@ -34,6 +34,9 @@ MkDocs + Material is the recommended choice for Python teams. For other scenario
 | Large open source projects | [Docusaurus](https://docusaurus.io/) or [Starlight](https://starlight.astro.build/) |
 | Auto-generated Python API docs | [Sphinx](https://www.sphinx-doc.org/) + autodoc |
 
+!!! note "Future: Zensical"
+    [Zensical](https://github.com/zensical/zensical) is the next-generation static site generator from the Material for MkDocs team. Built with Rust and Python for superior performance, it reads `mkdocs.yml` natively, making migration seamless. Consider it for new projects once it reaches stable release.
+
 ## Core Stack
 
 | Technology | Version | Purpose | Documentation |
@@ -90,10 +93,10 @@ Common deployment options for MkDocs sites:
 
 | Platform | Best For | Documentation |
 |----------|----------|---------------|
-| GitHub Pages | Open source projects | [Guide](https://www.mkdocs.org/user-guide/deploying-your-docs/#github-pages) |
-| GitLab Pages | GitLab-hosted projects | [Guide](https://docs.gitlab.com/ee/user/project/pages/) |
-| Google Cloud Storage | Production sites with CDN | [Guide](https://cloud.google.com/storage/docs/hosting-static-website) |
-| Cloud Run | Sites requiring authentication | [Guide](https://cloud.google.com/run/docs/quickstarts/deploy-container) |
+| [GitHub Pages](https://pages.github.com/) | Open source projects | [Guide](https://www.mkdocs.org/user-guide/deploying-your-docs/#github-pages) |
+| [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/) | GitLab-hosted projects | [Guide](https://docs.gitlab.com/ee/user/project/pages/) |
+| [Google Cloud Storage](https://cloud.google.com/storage) | Production sites with CDN | [Guide](https://cloud.google.com/storage/docs/hosting-static-website) |
+| [Cloud Run](https://cloud.google.com/run) | Sites requiring authentication | [Guide](https://cloud.google.com/run/docs/quickstarts/deploy-container) |
 
 ## Advanced Features
 

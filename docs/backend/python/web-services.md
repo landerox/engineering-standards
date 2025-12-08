@@ -25,14 +25,14 @@ Standards for building APIs, microservices, and web applications. Includes Docke
 
 | Tool | Description |
 |------|-------------|
-| **FastAPI** | High-performance async framework with automatic OpenAPI docs and Pydantic validation |
+| [**FastAPI**](https://github.com/fastapi/fastapi) | High-performance async framework with automatic OpenAPI docs and Pydantic validation |
 
 ### ASGI Server
 
 | Tool | Description | When to Use |
 |------|-------------|-------------|
-| **Granian** | High-performance ASGI server (Rust), integrated worker management | Recommended default |
-| **Uvicorn** | Standard ASGI server, very mature | Fallback if Granian incompatibilities |
+| [**Granian**](https://github.com/emmett-framework/granian) | High-performance ASGI server (Rust), integrated worker management | Recommended default |
+| [**Uvicorn**](https://github.com/encode/uvicorn) | Standard ASGI server, very mature | Fallback if Granian incompatibilities |
 
 **Granian vs Uvicorn:**
 
@@ -47,36 +47,36 @@ Standards for building APIs, microservices, and web applications. Includes Docke
 
 | Tool | Description |
 |------|-------------|
-| **httpx** | Async/sync HTTP client with HTTP/2 support, configurable timeouts |
+| [**httpx**](https://github.com/encode/httpx) | Async/sync HTTP client with HTTP/2 support, configurable timeouts |
 
 ### Configuration Tools
 
 | Tool | Description |
 |------|-------------|
-| **pydantic-settings** | Typed configuration from environment variables |
-| **python-dotenv** | `.env` file loading for local development |
+| [**pydantic-settings**](https://github.com/pydantic/pydantic-settings) | Typed configuration from environment variables |
+| [**python-dotenv**](https://github.com/theskumar/python-dotenv) | `.env` file loading for local development |
 
 ### Observability Tools
 
 | Tool | Description |
 |------|-------------|
-| **structlog** | Structured logging (JSON in production, readable in dev) |
-| **OpenTelemetry** | Distributed tracing and metrics |
-| **Sentry SDK** | Error tracking and performance monitoring |
-| **prometheus-client** | Metrics exposition |
+| [**structlog**](https://github.com/hynek/structlog) | Structured logging (JSON in production, readable in dev) |
+| [**OpenTelemetry**](https://github.com/open-telemetry/opentelemetry-python) | Distributed tracing and metrics |
+| [**Sentry SDK**](https://github.com/getsentry/sentry-python) | Error tracking and performance monitoring |
+| [**prometheus-client**](https://github.com/prometheus/client_python) | Metrics exposition |
 
 ### Resilience
 
 | Tool | Description |
 |------|-------------|
-| **tenacity** | Retries with backoff and circuit breaker patterns |
+| [**tenacity**](https://github.com/jd/tenacity) | Retries with backoff and circuit breaker patterns |
 
 ### High-Performance Serialization (Optional)
 
 | Tool | Description | When to Use |
 |------|-------------|-------------|
-| **orjson** | Ultra-fast JSON (Rust), drop-in replacement | High-traffic APIs |
-| **msgspec** | JSON/MessagePack, 2-5x faster than Pydantic | Critical performance |
+| [**orjson**](https://github.com/ijl/orjson) | Ultra-fast JSON (Rust), drop-in replacement | High-traffic APIs |
+| [**msgspec**](https://github.com/jcrist/msgspec) | JSON/MessagePack, 2-5x faster than Pydantic | Critical performance |
 
 > **Note:** Pydantic v2 is fast enough for most cases. Use orjson/msgspec only when profiling indicates serialization is a bottleneck.
 
@@ -84,8 +84,8 @@ Standards for building APIs, microservices, and web applications. Includes Docke
 
 | Tool | Description | When to Use |
 |------|-------------|-------------|
-| **httpx** | HTTP/REST client | External APIs, most cases |
-| **grpcio** | gRPC framework | High-frequency internal communication |
+| [**httpx**](https://github.com/encode/httpx) | HTTP/REST client | External APIs, most cases |
+| [**grpcio**](https://github.com/grpc/grpc) | gRPC framework | High-frequency internal communication |
 
 **gRPC vs REST:**
 
@@ -107,11 +107,11 @@ Standards for building APIs, microservices, and web applications. Includes Docke
 
 | Tool | Description |
 |------|-------------|
-| **PyJWT** | JWT encoding/decoding |
-| **python-jose** | JWT with JWS, JWE, JWK support |
-| **passlib** | Password hashing (bcrypt, argon2) |
-| **argon2-cffi** | Argon2 implementation |
-| **authlib** | OAuth2 / OpenID Connect |
+| [**PyJWT**](https://github.com/jpadilla/pyjwt) | JWT encoding/decoding |
+| [**python-jose**](https://github.com/mpdavis/python-jose) | JWT with JWS, JWE, JWK support |
+| [**passlib**](https://github.com/glic3rern/passlib) | Password hashing (bcrypt, argon2) |
+| [**argon2-cffi**](https://github.com/hynek/argon2-cffi) | Argon2 implementation |
+| [**authlib**](https://github.com/lepture/authlib) | OAuth2 / OpenID Connect |
 
 ### Password Hashing
 
@@ -514,8 +514,8 @@ Must exclude:
 | Component | Tool |
 |-----------|------|
 | Authentication | Workload Identity |
-| Development | Skaffold |
-| Secrets | External Secrets Operator |
+| Development | [Skaffold](https://github.com/GoogleContainerTools/skaffold) |
+| Secrets | [External Secrets Operator](https://github.com/external-secrets/external-secrets) |
 | Observability | OpenTelemetry Collector |
 | Metrics | prometheus-client |
 
@@ -567,15 +567,15 @@ Must exclude:
 
 | Tool | Purpose |
 |------|---------|
-| **pytest** | Test framework (from general-standards) |
-| **pytest-asyncio** | Async test support |
-| **pytest-mock** | unittest.mock wrapper |
-| **httpx** | AsyncClient for FastAPI testing |
-| **testcontainers** | PostgreSQL, Redis, etc. in Docker |
-| **respx** | Mock httpx requests |
-| **Faker** | Realistic fake data |
-| **factory-boy** | Factories for test objects |
-| **hypothesis** | Property-based testing for complex logic |
+| [**pytest**](https://github.com/pytest-dev/pytest) | Test framework (from general-standards) |
+| [**pytest-asyncio**](https://github.com/pytest-dev/pytest-asyncio) | Async test support |
+| [**pytest-mock**](https://github.com/pytest-dev/pytest-mock) | unittest.mock wrapper |
+| [**httpx**](https://github.com/encode/httpx) | AsyncClient for FastAPI testing |
+| [**testcontainers**](https://github.com/testcontainers/testcontainers-python) | PostgreSQL, Redis, etc. in Docker |
+| [**respx**](https://github.com/lundberg/respx) | Mock httpx requests |
+| [**Faker**](https://github.com/joke2k/faker) | Realistic fake data |
+| [**factory-boy**](https://github.com/FactoryBoy/factory_boy) | Factories for test objects |
+| [**hypothesis**](https://github.com/HypothesisWorks/hypothesis) | Property-based testing for complex logic |
 
 ### Test Structure
 
@@ -644,21 +644,21 @@ Beyond [General / Core](general-core.md), web services include:
 
 | Tool | Description | When to Use |
 |------|-------------|-------------|
-| **SQLAlchemy 2.0** | Mature ORM with async support, typed queries | Complex projects, advanced queries |
-| **SQLModel** | SQLAlchemy + Pydantic, less boilerplate | Simple CRUDs with FastAPI |
+| [**SQLAlchemy 2.0**](https://github.com/sqlalchemy/sqlalchemy) | Mature ORM with async support, typed queries | Complex projects, advanced queries |
+| [**SQLModel**](https://github.com/fastapi/sqlmodel) | SQLAlchemy + Pydantic, less boilerplate | Simple CRUDs with FastAPI |
 
 ### Drivers
 
 | Tool | Description |
 |------|-------------|
-| **asyncpg** | High-performance async PostgreSQL driver |
-| **psycopg3** | Modern PostgreSQL driver (sync/async) |
+| [**asyncpg**](https://github.com/MagicStack/asyncpg) | High-performance async PostgreSQL driver |
+| [**psycopg3**](https://github.com/psycopg/psycopg) | Modern PostgreSQL driver (sync/async) |
 
 ### Migrations
 
 | Tool | Description |
 |------|-------------|
-| **Alembic** | Database migrations for SQLAlchemy |
+| [**Alembic**](https://github.com/sqlalchemy/alembic) | Database migrations for SQLAlchemy |
 
 **Practices:**
 
@@ -703,9 +703,9 @@ Beyond [General / Core](general-core.md), web services include:
 
 | Tool | Description |
 |------|-------------|
-| **Redis** | Distributed cache, sessions, pub/sub |
-| **Memorystore** | Managed Redis in GCP |
-| **cachetools** | Local in-memory cache (LRU, TTL) |
+| [**Redis**](https://github.com/redis/redis) | Distributed cache, sessions, pub/sub |
+| [**Memorystore**](https://cloud.google.com/memorystore) | Managed Redis in GCP |
+| [**cachetools**](https://github.com/tkem/cachetools) | Local in-memory cache (LRU, TTL) |
 
 ### Cache Levels
 
@@ -748,10 +748,10 @@ Beyond [General / Core](general-core.md), web services include:
 
 | Tool | Use Case |
 |------|----------|
-| **Cloud Tasks** | Managed task queues in GCP |
-| **Cloud Scheduler** | Managed cron in GCP |
-| **Celery** | High scale, many workers |
-| **arq** | Simple tasks, native async, Redis broker |
+| [**Cloud Tasks**](https://cloud.google.com/tasks) | Managed task queues in GCP |
+| [**Cloud Scheduler**](https://cloud.google.com/scheduler) | Managed cron in GCP |
+| [**Celery**](https://github.com/celery/celery) | High scale, many workers |
+| [**arq**](https://github.com/python-arq/arq) | Simple tasks, native async, Redis broker |
 
 ### Background Task Best Practices
 
@@ -771,14 +771,14 @@ Beyond [General / Core](general-core.md), web services include:
 
 | Service | Use Case |
 |---------|----------|
-| **Cloud SQL** | Managed PostgreSQL/MySQL |
-| **Memorystore** | Managed Redis |
-| **Secret Manager** | Secrets storage |
-| **Cloud Tasks** | Task queues |
-| **Cloud Scheduler** | Cron jobs |
-| **Pub/Sub** | Messaging, events |
-| **Cloud Storage** | Object storage |
-| **Cloud CDN** | Static content delivery |
+| [**Cloud SQL**](https://cloud.google.com/sql) | Managed PostgreSQL/MySQL |
+| [**Memorystore**](https://cloud.google.com/memorystore) | Managed Redis |
+| [**Secret Manager**](https://cloud.google.com/secret-manager) | Secrets storage |
+| [**Cloud Tasks**](https://cloud.google.com/tasks) | Task queues |
+| [**Cloud Scheduler**](https://cloud.google.com/scheduler) | Cron jobs |
+| [**Pub/Sub**](https://cloud.google.com/pubsub) | Messaging, events |
+| [**Cloud Storage**](https://cloud.google.com/storage) | Object storage |
+| [**Cloud CDN**](https://cloud.google.com/cdn) | Static content delivery |
 
 ### GCP Authentication
 
