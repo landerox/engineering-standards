@@ -456,7 +456,10 @@ if TYPE_CHECKING:
     import pandas as pd
     import polars as pl
 
-# Cache imported modules to avoid repeated import overhead
+# Cache imported modules to avoid repeated ImportError checking
+# Note: Python's import system already caches modules after first import,
+# but this pattern also caches the ImportError check itself, which is useful
+# when functions are called thousands of times in tight loops.
 _pandas_module = None
 _polars_module = None
 
@@ -464,9 +467,10 @@ _polars_module = None
 def _get_pandas():
     """Get pandas module with caching.
 
-    Performance improvement:
-    - Cache module after first import to avoid repeated import overhead
-    - Import is relatively expensive, especially for large libraries like pandas
+    Performance note:
+    - Primarily caches the ImportError check/handling
+    - Modest benefit (~1-5μs per call) but useful in high-frequency scenarios
+    - Main value is cleaner separation of import logic from business logic
     """
     global _pandas_module
     if _pandas_module is None:
@@ -481,8 +485,8 @@ def _get_pandas():
 def _get_polars():
     """Get polars module with caching.
 
-    Performance improvement:
-    - Cache module after first import to avoid repeated import overhead
+    Performance note:
+    - Primarily caches the ImportError check/handling
     """
     global _polars_module
     if _polars_module is None:

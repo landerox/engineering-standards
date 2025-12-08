@@ -922,13 +922,21 @@ def download_from_sftp(
     remote_path: str,
     local_path: Path,
     timeout: float = 30.0,
+    verify_size: bool = True,
 ) -> None:
     """Download file from SFTP server with retry logic and proper timeouts.
 
     Performance improvements:
     - Configurable timeout prevents hanging connections
-    - Context manager ensures proper resource cleanup
-    - Retry decorator handles transient network failures
+    - File size validation ensures complete download (can be disabled for text mode)
+    - Proper nested try/finally ensures resource cleanup
+
+    Note: tenacity is listed in the Resilience tools section above.
+
+    Args:
+        verify_size: If True, validates downloaded file size matches remote.
+                     Set to False if transferring text files that may have
+                     line ending conversions (CRLF <-> LF).
     """
     key = paramiko.RSAKey.from_private_key_file(str(key_path))
 
@@ -938,14 +946,21 @@ def download_from_sftp(
     try:
         sftp = paramiko.SFTPClient.from_transport(transport)
         try:
-            # Get remote file size for validation
-            remote_size = sftp.stat(remote_path).st_size
+            # Get remote file size for validation (optional)
+            if verify_size:
+                remote_size = sftp.stat(remote_path).st_size
+
             sftp.get(remote_path, str(local_path))
 
             # Verify download completed successfully
-            local_size = local_path.stat().st_size
-            if local_size != remote_size:
-                raise ValueError(f"Downloaded size mismatch: {local_size} != {remote_size}")
+            if verify_size:
+                local_size = local_path.stat().st_size
+                if local_size != remote_size:
+                    raise ValueError(
+                        f"Downloaded size mismatch: {local_size} != {remote_size}. "
+                        "This may occur with text mode transfers and line ending differences. "
+                        "Set verify_size=False if this is expected."
+                    )
         finally:
             sftp.close()
     finally:
