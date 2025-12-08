@@ -456,18 +456,53 @@ if TYPE_CHECKING:
     import pandas as pd
     import polars as pl
 
+# Cache imported modules to avoid repeated import overhead
+_pandas_module = None
+_polars_module = None
+
+
+def _get_pandas():
+    """Get pandas module with caching.
+
+    Performance improvement:
+    - Cache module after first import to avoid repeated import overhead
+    - Import is relatively expensive, especially for large libraries like pandas
+    """
+    global _pandas_module
+    if _pandas_module is None:
+        try:
+            import pandas as pd
+            _pandas_module = pd
+        except ImportError:
+            raise ImportError("Install with: pip install mypackage[pandas]")
+    return _pandas_module
+
+
+def _get_polars():
+    """Get polars module with caching.
+
+    Performance improvement:
+    - Cache module after first import to avoid repeated import overhead
+    """
+    global _polars_module
+    if _polars_module is None:
+        try:
+            import polars as pl
+            _polars_module = pl
+        except ImportError:
+            raise ImportError("Install with: pip install mypackage[polars]")
+    return _polars_module
+
+
 def load_with_pandas(path: str) -> "pd.DataFrame":
-    try:
-        import pandas as pd
-    except ImportError:
-        raise ImportError("Install with: pip install mypackage[pandas]")
+    """Load CSV with pandas, using cached module import."""
+    pd = _get_pandas()
     return pd.read_csv(path)
 
+
 def load_with_polars(path: str) -> "pl.DataFrame":
-    try:
-        import polars as pl
-    except ImportError:
-        raise ImportError("Install with: pip install mypackage[polars]")
+    """Load CSV with polars, using cached module import."""
+    pl = _get_polars()
     return pl.read_csv(path)
 ```
 
@@ -789,3 +824,53 @@ Beyond [General / Core](general-core.md), packages include:
 | Loose version bounds | `>=1.0,<3` not `==1.2.3` |
 | Optional dependencies | Heavy deps as extras |
 | No upper bounds (usually) | Allow newer versions |
+
+### Performance Considerations
+
+| Practice | Description | Impact |
+|----------|-------------|--------|
+| **Lazy imports** | Import heavy modules only when needed | Faster import time |
+| **Cache expensive operations** | Use `@lru_cache` for repeated computations | Avoid redundant work |
+| **Avoid I/O on import** | Don't read files at module level | Faster startup |
+| **Profile before optimizing** | Use `cProfile` or `py-spy` to find bottlenecks | Target real issues |
+| **Consider compiled extensions** | Use Cython/Rust for hot paths | 10-100x speedup |
+
+**Example: Lazy Import Pattern**
+
+```python
+# mypackage/utils.py
+# Good: Heavy imports only when function is called
+def process_with_pandas(data: str) -> dict:
+    """Process data with pandas (lazy import)."""
+    import pandas as pd  # Only imported if this function is used
+    import numpy as np
+    df = pd.DataFrame({"data": [data]})
+    return df.to_dict()
+
+# Bad: Heavy imports at module level
+# import pandas as pd  # Imported even if never used
+# import numpy as np
+```
+
+**Example: Caching Expensive Operations**
+
+```python
+from functools import lru_cache
+import hashlib
+
+@lru_cache(maxsize=128)
+def compute_expensive_hash(data: str) -> str:
+    """Compute hash with caching.
+
+    Performance: Repeated calls with same input return cached result.
+    Useful for frequently called functions with repeated inputs.
+    """
+    # Simulate expensive operation
+    for _ in range(1000):
+        data = hashlib.sha256(data.encode()).hexdigest()
+    return data
+
+# First call: ~1ms
+# Subsequent calls with same input: ~1μs (1000x faster)
+result = compute_expensive_hash("same-input")
+```
