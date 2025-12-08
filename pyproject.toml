@@ -5,7 +5,7 @@ description = "Personal engineering standards and knowledge base."
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }
-authors = [{ name = "Landerox", email = "your@email.com" }]
+authors = [{ name = "Fernando Landero", email = "landerox@gmail.com" }]
 keywords = ["documentation", "engineering", "standards", "knowledge-base"]
 dependencies = [
   "mkdocs-material>=9.7.0",
