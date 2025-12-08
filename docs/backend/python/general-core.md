@@ -92,7 +92,7 @@ All projects must use src-layout where source code resides within a `src/` direc
 | `CHANGELOG.md` | Change history by version ([Keep a Changelog](https://keepachangelog.com/) + [SemVer](https://semver.org/)) |
 | `SECURITY.md` | Security policy and vulnerability reporting process |
 
-### GitHub Files
+### GitHub Repository Files
 
 | File | Purpose |
 |------|---------|
@@ -125,6 +125,28 @@ All projects must use src-layout where source code resides within a `src/` direc
 | Type aliases | PascalCase | `UserId` |
 | Private | `_` prefix | `_internal_cache` |
 | "Very private" | `__` prefix | `__secret_key` |
+| Environment variables | UPPER_SNAKE_CASE | `DATABASE_URL` |
+
+### Environment Variables
+
+| Practice | Convention | Example |
+|----------|------------|---------|
+| General format | `UPPER_SNAKE_CASE` | `LOG_LEVEL`, `DEBUG` |
+| App prefix | `APPNAME_*` | `MYAPP_DATABASE_URL` |
+| Feature flags | `ENABLE_*` or `*_ENABLED` | `ENABLE_CACHE`, `FEATURE_X_ENABLED` |
+| URLs/Endpoints | `*_URL` or `*_ENDPOINT` | `API_URL`, `REDIS_ENDPOINT` |
+| Secrets | `*_KEY`, `*_SECRET`, `*_TOKEN` | `API_KEY`, `JWT_SECRET` |
+| Timeouts | `*_TIMEOUT` (in seconds) | `REQUEST_TIMEOUT` |
+| Ports | `*_PORT` | `SERVER_PORT` |
+
+**Best practices:**
+
+| Practice | Description |
+|----------|-------------|
+| Use app prefix in shared environments | Avoid collisions: `MYAPP_DB_HOST` vs `DB_HOST` |
+| Document all variables | Keep `.env.example` updated |
+| Use descriptive names | `DATABASE_CONNECTION_POOL_SIZE` over `DB_POOL` |
+| Don't embed environment in name | Use `API_URL`, not `PROD_API_URL` |
 
 ---
 
@@ -297,9 +319,14 @@ All functions must have type annotations:
 | `feat` | New functionality |
 | `fix` | Bug fix |
 | `docs` | Documentation only |
+| `style` | Code style (formatting, no logic change) |
 | `refactor` | Refactoring without functional change |
+| `perf` | Performance improvements |
 | `test` | Add or fix tests |
+| `build` | Build system or dependencies |
+| `ci` | CI/CD configuration |
 | `chore` | Maintenance tasks |
+| `revert` | Revert a previous commit |
 
 ### Semantic Versioning (SemVer)
 
@@ -330,12 +357,12 @@ Follow [Keep a Changelog](https://keepachangelog.com/) format:
 
 | Hook | Purpose |
 |------|---------|
-| ruff check | Linting |
-| ruff format | Verify format |
-| pyright | Type checking |
+| [pre-commit-hooks](https://github.com/pre-commit/pre-commit-hooks) | trailing-whitespace, end-of-file-fixer, check-yaml, check-toml, check-added-large-files, check-case-conflict, check-merge-conflict, no-commit-to-branch |
+| [ruff-pre-commit](https://github.com/astral-sh/ruff-pre-commit) | Linting (`ruff check --fix`) and formatting (`ruff format`) |
+| [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) | Markdown validation and auto-fix |
+| [pyright-python](https://github.com/RobertCraigie/pyright-python) | Static type checking |
+| [detect-secrets](https://github.com/Yelp/detect-secrets) | Secret detection with baseline |
 | [conventional-pre-commit](https://github.com/compilerla/conventional-pre-commit) | Validate commit message format |
-| detect-secrets | Detect secrets |
-| no-commit-to-branch | Prevent direct commits to main |
 
 ### Branching: GitHub Flow
 
@@ -348,29 +375,23 @@ Follow [Keep a Changelog](https://keepachangelog.com/) format:
 
 ## Base CI/CD
 
-### Required Workflows
+Every project must have CI/CD pipelines that enforce quality standards. Implementation details will be covered in the CI/CD Standards document.
 
-| Workflow | Trigger | Jobs |
-|----------|---------|------|
-| CI | Push to main, PRs | lint, typecheck, test, security |
-| Security | Schedule (weekly) | vulnerability scan |
+### Minimum Required Checks
 
-### Jobs
+| Check | Purpose | Tool |
+|-------|---------|------|
+| Lint | Code style and errors | Ruff |
+| Type Check | Static type verification | Pyright |
+| Test | Automated tests with coverage | pytest |
+| Security | Vulnerability scanning | Bandit, pip-audit |
 
-| Job | Tools |
-|-----|-------|
-| Lint | `ruff check`, `ruff format --check` |
-| Type Check | `pyright` (strict mode) |
-| Test | `pytest` with coverage |
-| Security | `bandit`, `pip-audit`, `gitleaks` |
+### GitHub CI/CD Files
 
-### CI/CD Practices
-
-| Practice | Description |
-|----------|-------------|
-| `uv sync --frozen` | Fail if lock file is outdated |
-| Dependency caching | Cache uv directory between runs |
-| Branch protection | Require green CI for merge |
+| File | Purpose |
+|------|---------|
+| `.github/workflows/` | CI/CD pipeline definitions |
+| `.github/dependabot.yml` | Automatic dependency updates |
 
 ---
 
@@ -423,3 +444,4 @@ Follow [Keep a Changelog](https://keepachangelog.com/) format:
 - Instant onboarding (just open in VS Code)
 - Pre-installed extensions and configurations
 - Host system isolation
+- Easy to replicate production-like environments
