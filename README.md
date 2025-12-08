@@ -8,10 +8,14 @@ This repository hosts the engineering framework used to ensure consistency, scal
 
 ## Core Philosophy
 
-* **Simplicity:** Straightforward solutions over unnecessary complexity.
-* **Consistency:** Predictable patterns across all services and jobs.
-* **Automation:** If it can be scripted, it is automated (CI/CD, Linting).
-* **Reproducibility:** Deterministic environments using modern tooling.
+- **Simplicity:** Straightforward solutions over unnecessary complexity.
+- **Consistency:** Predictable patterns across all services and jobs.
+- **Automation:** If it can be scripted, it is automated (CI/CD, Linting).
+- **Reproducibility:** Deterministic environments using modern tooling.
+
+## Live Site
+
+- [engineering-standards](https://landerox.github.io/engineering-standards)
 
 ## Quick Start
 
@@ -34,6 +38,7 @@ Requires [uv](https://docs.astral.sh/uv/getting-started/installation/) package m
 git clone https://github.com/landerox/engineering-standards.git
 cd engineering-standards
 uv sync --all-groups
+uv run pre-commit install
 ```
 
 ### Run Documentation Locally
@@ -43,10 +48,6 @@ uv run mkdocs serve
 ```
 
 Then open [http://localhost:8000](http://localhost:8000) in your browser.
-
-## Documentation
-
-📖 **[View published documentation](https://landerox.github.io/engineering-standards/)**
 
 ## Contributing
 

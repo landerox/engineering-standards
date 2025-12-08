@@ -1,67 +1,30 @@
 # Markdown Linting Configuration
 # Reference: https://github.com/igorshubovych/markdownlint-cli
 
-# ============================================================================
-# DEFAULT RULES
-# ============================================================================
 default: true
 
-# ============================================================================
-# DISABLED RULES (Override defaults)
-# ============================================================================
+# Disabled rules
+MD013: false  # Line length handled by editor/formatter
+MD033: false  # Allow inline HTML for badges, tables
+MD060: false  # Flexibility in reference definitions
 
-# MD013: Line length
-# Rationale: We enforce 88 chars via Ruff/Editor, not Markdown linter
-MD013: false
-
-# MD033: Inline HTML
-# Rationale: Allow HTML for advanced formatting (badges, tables, etc.)
-MD033: false
-
-# MD060: Reference link and image definitions
-# Rationale: Flexibility in reference definition placement
-MD060: false
-
-# ============================================================================
-# CUSTOM RULE CONFIGURATIONS
-# ============================================================================
-
-# MD001: Heading levels should only increment by one level at a time
-MD001: true
-
-# MD003: Heading style (consistency)
-# Options: consistent, atx, atx_closed, setext, setext_closed
-MD003:
-  style: consistent
-
-# MD004: Unordered list indentation
-# Options: consistent, asterisk, plus, dash
+# List formatting
 MD004:
-  style: consistent
-
-# MD007: Unordered list indentation (spaces)
+  style: consistent  # Allows * or - (but must be consistent per file)
 MD007:
-  indent: 2
-
-# MD009: Trailing spaces (allow in code blocks)
-MD009:
-  br_spaces: 0
-  list_item_empty_lines: false
-  strict: false
-
-# MD010: Hard tabs
-MD010:
-  code_blocks: true
-  ignore_code_languages: []
-
-# MD025: Multiple top-level headings in the same document
-MD025:
-  front_matter_title: string
-
-# MD029: Ordered list item prefix (1. or 1))
+  indent: 2          # 2-space indentation for nested lists
 MD029:
-  style: one
+  style: one         # Use 1. for all ordered list items
 
-# MD035: Horizontal rule style
-MD035:
-  style: consistent
+# Whitespace handling
+MD009:
+  br_spaces: 0                  # No trailing spaces for line breaks
+  list_item_empty_lines: false  # No empty lines in list items
+  strict: false                 # Allow trailing spaces in code blocks
+MD010:
+  code_blocks: true             # Check for hard tabs in code blocks
+  ignore_code_languages: []     # No languages excluded from tab check
+
+# Document structure
+MD025:
+  front_matter_title: ""        # Ignore frontmatter title check
