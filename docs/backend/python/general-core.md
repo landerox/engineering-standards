@@ -7,61 +7,48 @@ Base standards that apply to **all** Python project types. Each project type (We
 
 ---
 
-## Philosophy
-
-| Principle | Description |
-|-----------|-------------|
-| Simplicity | Straightforward solutions over unnecessary abstractions |
-| Explicitness | Code communicates its intent without hidden knowledge |
-| Consistency | Same patterns and conventions across all projects |
-| Automation | Repetitive processes are automated |
-| Security by default | Security considerations from the start |
-| Reproducibility | Deterministically reproducible environments |
-
----
-
 ## Mandatory Base Stack
 
 ### Runtime
 
 | Tool | Version | Description |
 |------|---------|-------------|
-| **Python** | 3.12+ | Performance improvements, better generic type support, descriptive error messages |
+| [**Python**](https://www.python.org/) | 3.12+ | Performance improvements, better generic type support, descriptive error messages |
 
 ### Dependency and Environment Management
 
 | Tool | Description | Replaces |
 |------|-------------|----------|
-| **uv** | All-in-one management: dependencies, virtual environments, Python versions. Written in Rust, 10-100x faster | pip, poetry, pipenv, pip-tools, pyenv, venv |
+| [**uv**](https://github.com/astral-sh/uv) | All-in-one management: dependencies, virtual environments, Python versions. Written in Rust, 10-100x faster | pip, poetry, pipenv, pip-tools, pyenv, venv |
 
 ### Code Quality
 
 | Tool | Description | Replaces |
 |------|-------------|----------|
-| **Ruff** | Extremely fast linter and formatter (Rust). 800+ rules, auto-fix, unified configuration in pyproject.toml | Flake8, Black, isort, autopep8, pylint, pyupgrade |
-| **Pyright** | Static type checker (Microsoft). Pylance engine in VS Code, better inference than mypy | mypy |
+| [**Ruff**](https://github.com/astral-sh/ruff) | Extremely fast linter and formatter (Rust). 800+ rules, auto-fix, unified configuration in pyproject.toml | Flake8, Black, isort, autopep8, pylint, pyupgrade |
+| [**Pyright**](https://github.com/microsoft/pyright) | Static type checker (Microsoft). Pylance engine in VS Code, better inference than mypy | mypy |
 
 ### Testing
 
 | Tool | Description |
 |------|-------------|
-| **pytest** | Testing framework with extensible plugin architecture |
-| **pytest-cov** | Coverage integration with pytest |
-| **pytest-mock** | unittest.mock wrapper integrated with pytest |
+| [**pytest**](https://github.com/pytest-dev/pytest) | Testing framework with extensible plugin architecture |
+| [**pytest-cov**](https://github.com/pytest-dev/pytest-cov) | Coverage integration with pytest |
+| [**pytest-mock**](https://github.com/pytest-dev/pytest-mock) | unittest.mock wrapper integrated with pytest |
 
 ### Validation and Serialization
 
 | Tool | Description |
 |------|-------------|
-| **Pydantic v2** | Data validation using type hints. Rust core for maximum performance |
-| **pydantic-settings** | Typed configuration from environment variables |
+| [**Pydantic v2**](https://github.com/pydantic/pydantic) | Data validation using type hints. Rust core for maximum performance |
+| [**pydantic-settings**](https://github.com/pydantic/pydantic-settings) | Typed configuration from environment variables |
 
 ### Task Runner and Automation
 
 | Tool | Description | Replaces |
 |------|-------------|----------|
-| **just** | Modern command runner, clean syntax, cross-platform | Makefile |
-| **pre-commit** | Framework for managing Git hooks consistently | Scattered bash scripts |
+| [**just**](https://github.com/casey/just) | Modern command runner, clean syntax, cross-platform | Makefile |
+| [**pre-commit**](https://github.com/pre-commit/pre-commit) | Framework for managing Git hooks consistently | Scattered bash scripts |
 
 ---
 
@@ -285,10 +272,10 @@ All functions must have type annotations:
 
 | Tool | Description | When |
 |------|-------------|------|
-| **Bandit** | Static security analysis | CI/CD, pre-commit |
-| **pip-audit** | Dependency vulnerability scanning | CI/CD |
-| **detect-secrets** | Secret detection with baseline | pre-commit |
-| **gitleaks** | Secret detection in code | CI/CD |
+| [**Bandit**](https://github.com/PyCQA/bandit) | Static security analysis | CI/CD, pre-commit |
+| [**pip-audit**](https://github.com/pypa/pip-audit) | Dependency vulnerability scanning | CI/CD |
+| [**detect-secrets**](https://github.com/Yelp/detect-secrets) | Secret detection with baseline | pre-commit |
+| [**gitleaks**](https://github.com/gitleaks/gitleaks) | Secret detection in code | CI/CD |
 
 ### Practices
 
@@ -346,7 +333,7 @@ Follow [Keep a Changelog](https://keepachangelog.com/) format:
 | ruff check | Linting |
 | ruff format | Verify format |
 | pyright | Type checking |
-| conventional-pre-commit | Validate commit message format |
+| [conventional-pre-commit](https://github.com/compilerla/conventional-pre-commit) | Validate commit message format |
 | detect-secrets | Detect secrets |
 | no-commit-to-branch | Prevent direct commits to main |
 
@@ -404,8 +391,8 @@ Follow [Keep a Changelog](https://keepachangelog.com/) format:
 
 | Tool | Purpose | Configuration File |
 |------|---------|-------------------|
-| **markdownlint** | Markdown file linting | `.markdownlint.yaml` |
-| **cspell** | Spell checking in code and docs | `cspell.json` |
+| [**markdownlint**](https://github.com/DavidAnson/markdownlint) | Markdown file linting | `.markdownlint.yaml` |
+| [**cspell**](https://github.com/streetsidesoftware/cspell) | Spell checking in code and docs | `cspell.json` |
 
 ---
 
@@ -413,12 +400,12 @@ Follow [Keep a Changelog](https://keepachangelog.com/) format:
 
 | Legacy Tool | Replaced by |
 |-------------|-------------|
-| pip, poetry, pipenv | uv |
-| Flake8, Black, isort | Ruff |
-| mypy | Pyright |
-| Makefile | just |
-| argparse | Typer |
-| tox | nox |
+| pip, poetry, pipenv | [uv](https://github.com/astral-sh/uv) |
+| Flake8, Black, isort | [Ruff](https://github.com/astral-sh/ruff) |
+| mypy | [Pyright](https://github.com/microsoft/pyright) |
+| Makefile | [just](https://github.com/casey/just) |
+| argparse | [Typer](https://github.com/fastapi/typer) |
+| tox | [nox](https://github.com/wntrblm/nox) |
 
 ---
 

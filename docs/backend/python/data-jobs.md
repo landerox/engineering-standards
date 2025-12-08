@@ -26,53 +26,53 @@ Standards for building ETL pipelines, batch processing jobs, scheduled tasks, an
 
 | Tool | Description | Timeout |
 |------|-------------|---------|
-| **Cloud Run Jobs** | Serverless container execution | Up to 24h |
-| **Cloud Scheduler** | Managed cron triggers | - |
-| **Cloud Workflows** | Multi-step orchestration | - |
+| [**Cloud Run Jobs**](https://cloud.google.com/run/docs/create-jobs) | Serverless container execution | Up to 24h |
+| [**Cloud Scheduler**](https://cloud.google.com/scheduler) | Managed cron triggers | - |
+| [**Cloud Workflows**](https://cloud.google.com/workflows) | Multi-step orchestration | - |
 
 ### CLI Framework
 
 | Tool | Description |
 |------|-------------|
-| **Typer** | Modern CLI framework with type hints |
-| **Rich** | Progress bars, tables, colored output |
+| [**Typer**](https://github.com/fastapi/typer) | Modern CLI framework with type hints |
+| [**Rich**](https://github.com/Textualize/rich) | Progress bars, tables, colored output |
 
 ### Data Processing
 
 | Tool | Description |
 |------|-------------|
-| **Polars** | High-performance DataFrames (Rust), recommended default |
-| **DuckDB** | In-process SQL analytics, great for ad-hoc queries |
-| **Pandera** | DataFrame schema validation |
-| **connectorx** | Fast database → DataFrame loading |
+| [**Polars**](https://github.com/pola-rs/polars) | High-performance DataFrames (Rust), recommended default |
+| [**DuckDB**](https://github.com/duckdb/duckdb) | In-process SQL analytics, great for ad-hoc queries |
+| [**Pandera**](https://github.com/unionai-oss/pandera) | DataFrame schema validation |
+| [**connectorx**](https://github.com/sfu-db/connector-x) | Fast database → DataFrame loading |
 
 ### Data Formats
 
 | Tool | Description |
 |------|-------------|
-| **fastavro** | Fast Avro serialization |
-| **deltalake** | Delta Lake format support |
-| **pyarrow** | Arrow format, Parquet I/O |
+| [**fastavro**](https://github.com/fastavro/fastavro) | Fast Avro serialization |
+| [**deltalake**](https://github.com/delta-io/delta-rs) | Delta Lake format support |
+| [**pyarrow**](https://github.com/apache/arrow) | Arrow format, Parquet I/O |
 
 ### BigQuery
 
 | Tool | Description |
 |------|-------------|
-| **google-cloud-bigquery** | Official BigQuery client |
-| **db-dtypes** | BigQuery-specific dtypes for pandas |
+| [**google-cloud-bigquery**](https://github.com/googleapis/python-bigquery) | Official BigQuery client |
+| [**db-dtypes**](https://github.com/googleapis/python-db-dtypes-pandas) | BigQuery-specific dtypes for pandas |
 
 ### Resilience
 
 | Tool | Description |
 |------|-------------|
-| **tenacity** | Retries with exponential backoff |
+| [**tenacity**](https://github.com/jd/tenacity) | Retries with exponential backoff |
 
 ### Observability
 
 | Tool | Description |
 |------|-------------|
-| **structlog** | Structured logging (JSON in production) |
-| **OpenTelemetry** | Distributed tracing |
+| [**structlog**](https://github.com/hynek/structlog) | Structured logging (JSON in production) |
+| [**OpenTelemetry**](https://github.com/open-telemetry/opentelemetry-python) | Distributed tracing |
 
 ---
 
@@ -433,10 +433,10 @@ myjob backfill --start-date=2024-01-01 --end-date=2024-01-31 --parallel=4
 
 | Tool | Use Case |
 |------|----------|
-| **google-cloud-bigquery** | Official client |
-| **pandas-gbq** | Pandas integration |
-| **connectorx** | Fast loading to DataFrame |
-| **sqlglot** | SQL parsing/transpilation |
+| [**google-cloud-bigquery**](https://github.com/googleapis/python-bigquery) | Official client |
+| [**pandas-gbq**](https://github.com/googleapis/python-bigquery-pandas) | Pandas integration |
+| [**connectorx**](https://github.com/sfu-db/connector-x) | Fast loading to DataFrame |
+| [**sqlglot**](https://github.com/tobymao/sqlglot) | SQL parsing/transpilation |
 
 ### Reading from BigQuery
 
@@ -543,10 +543,10 @@ myjob backfill --start-date=2024-01-01 --end-date=2024-01-31 --parallel=4
 
 | Tool | Use Case |
 |------|----------|
-| **Cloud Monitoring** | GCP-native alerting |
-| **Slack SDK** | Direct Slack messages |
-| **SendGrid** | Email notifications |
-| **PagerDuty** | On-call alerting |
+| [**Cloud Monitoring**](https://cloud.google.com/monitoring) | GCP-native alerting |
+| [**Slack SDK**](https://github.com/slackapi/python-slack-sdk) | Direct Slack messages |
+| [**SendGrid**](https://github.com/sendgrid/sendgrid-python) | Email notifications |
+| [**PagerDuty**](https://github.com/PagerDuty/pdpyras) | On-call alerting |
 
 ### Notification Content
 
@@ -614,11 +614,11 @@ myjob backfill --start-date=2024-01-01 --end-date=2024-01-31 --parallel=4
 | Format | Tool | Notes |
 |--------|------|-------|
 | **CSV** | Polars, csv | No types, encoding issues |
-| **Excel (.xlsx)** | openpyxl, xlsxwriter | Slow, memory-heavy |
-| **Excel (.xls)** | xlrd | Legacy, avoid if possible |
-| **JSON** | orjson, Polars | Good for small data |
+| **Excel (.xlsx)** | [openpyxl](https://github.com/theorchard/openpyxl), [xlsxwriter](https://github.com/jmcnamara/XlsxWriter) | Slow, memory-heavy |
+| **Excel (.xls)** | [xlrd](https://github.com/python-excel/xlrd) | Legacy, avoid if possible |
+| **JSON** | [orjson](https://github.com/ijl/orjson), Polars | Good for small data |
 | **JSONL** | Polars | Better for large data |
-| **XML** | lxml, xmltodict | Legacy integrations |
+| **XML** | [lxml](https://github.com/lxml/lxml), xmltodict | Legacy integrations |
 | **Fixed-width** | Polars | Mainframe data |
 
 ### CSV Handling
@@ -646,8 +646,8 @@ df = pl.read_csv(
 
 | Tool | Use Case |
 |------|----------|
-| **openpyxl** | Read/write .xlsx |
-| **xlsxwriter** | Write .xlsx (faster) |
+| [**openpyxl**](https://github.com/theorchard/openpyxl) | Read/write .xlsx |
+| [**xlsxwriter**](https://github.com/jmcnamara/XlsxWriter) | Write .xlsx (faster) |
 | **Polars** | Read .xlsx via connectorx |
 
 **Best Practices:**
@@ -666,7 +666,7 @@ df = pl.read_csv(
 | **.gz** | gzip, Polars native | Single file compression |
 | **.zip** | zipfile | Multiple files archive |
 | **.tar.gz** | tarfile | Unix archives |
-| **.7z** | py7zr | High compression |
+| **.7z** | [py7zr](https://github.com/miurahr/py7zr) | High compression |
 | **.bz2** | bz2 | Better compression, slower |
 
 ```python
@@ -762,8 +762,8 @@ with tempfile.TemporaryDirectory() as tmp:
 
 | Tool | Use Case |
 |------|----------|
-| **gcsfs** | Filesystem interface |
-| **google-cloud-storage** | Official client, more control |
+| [**gcsfs**](https://github.com/fsspec/gcsfs) | Filesystem interface |
+| [**google-cloud-storage**](https://github.com/googleapis/python-storage) | Official client, more control |
 
 ```python
 # Polars reads directly from GCS
@@ -783,8 +783,8 @@ blob.download_to_filename("/tmp/file.csv")
 | Tool | Protocol |
 |------|----------|
 | **ftplib** | FTP (built-in, insecure) |
-| **paramiko** | SFTP (SSH) |
-| **pysftp** | SFTP (simpler API) |
+| [**paramiko**](https://github.com/paramiko/paramiko) | SFTP (SSH) |
+| [**pysftp**](https://github.com/wtsi-npg/pysftp) | SFTP (simpler API) |
 
 **SFTP Best Practices:**
 
@@ -826,8 +826,8 @@ def download_from_sftp(
 
 | Tool | Use Case |
 |------|----------|
-| **httpx** | Modern async/sync client |
-| **requests** | Simple downloads |
+| [**httpx**](https://github.com/encode/httpx) | Modern async/sync client |
+| [**requests**](https://github.com/psf/requests) | Simple downloads |
 
 ```python
 import httpx
@@ -846,8 +846,8 @@ def download_file(url: str, output: Path) -> None:
 
 | Tool | Description |
 |------|-------------|
-| **boto3** | Official AWS SDK |
-| **s3fs** | Filesystem interface |
+| [**boto3**](https://github.com/boto/boto3) | Official AWS SDK |
+| [**s3fs**](https://github.com/fsspec/s3fs) | Filesystem interface |
 
 ---
 
@@ -1115,8 +1115,8 @@ spec:
 
 | Tool | Description | When to Use |
 |------|-------------|-------------|
-| **FastStream** | Modern event framework (FastAPI-style) | Recommended |
-| **google-cloud-pubsub** | Low-level Pub/Sub client | Full control |
+| [**FastStream**](https://github.com/airtai/faststream) | Modern event framework (FastAPI-style) | Recommended |
+| [**google-cloud-pubsub**](https://github.com/googleapis/python-pubsub) | Low-level Pub/Sub client | Full control |
 
 ### FastStream Benefits
 
@@ -1195,10 +1195,10 @@ docker run my-job backfill --start=2024-01-01 --end=2024-01-31
 
 | Tool | Purpose |
 |------|---------|
-| **pytest** | Test framework |
-| **pytest-mock** | Mocking |
-| **hypothesis** | Property-based testing for transforms |
-| **Faker** | Generate test data |
+| [**pytest**](https://github.com/pytest-dev/pytest) | Test framework |
+| [**pytest-mock**](https://github.com/pytest-dev/pytest-mock) | Mocking |
+| [**hypothesis**](https://github.com/HypothesisWorks/hypothesis) | Property-based testing for transforms |
+| [**Faker**](https://github.com/joke2k/faker) | Generate test data |
 
 ### What to Test
 
@@ -1240,12 +1240,12 @@ Beyond [General / Core](general-core.md), data jobs include:
 
 | Service | Use Case |
 |---------|----------|
-| **Cloud Run Jobs** | Job execution |
-| **Cloud Scheduler** | Cron triggers |
-| **Cloud Storage** | Data input/output |
-| **BigQuery** | Data warehouse |
-| **Pub/Sub** | Event triggers |
-| **Secret Manager** | Credentials |
+| [**Cloud Run Jobs**](https://cloud.google.com/run/docs/create-jobs) | Job execution |
+| [**Cloud Scheduler**](https://cloud.google.com/scheduler) | Cron triggers |
+| [**Cloud Storage**](https://cloud.google.com/storage) | Data input/output |
+| [**BigQuery**](https://cloud.google.com/bigquery) | Data warehouse |
+| [**Pub/Sub**](https://cloud.google.com/pubsub) | Event triggers |
+| [**Secret Manager**](https://cloud.google.com/secret-manager) | Credentials |
 
 ### Authentication
 
