@@ -65,7 +65,8 @@
     "pymdownx",
     "superfences",
     "inlinehilite",
-    "linenums"
+    "linenums",
+    "glightbox"
   ],
   "ignoreWords": [
     "nd",

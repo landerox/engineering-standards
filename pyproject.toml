@@ -4,6 +4,9 @@ version = "1.0.0"
 description = "Personal engineering standards and knowledge base."
 readme = "README.md"
 requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Fernando Landero", email = "landerox@gmail.com" }]
+keywords = ["documentation", "engineering", "standards", "knowledge-base"]
 dependencies = [
   "mkdocs-material>=9.7.0",
   "mkdocs-minify-plugin>=0.8.0",
@@ -15,11 +18,17 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["ruff>=0.14.8", "pyright>=1.1.407", "pre-commit>=4.5.0"]
+dev = [
+  "ruff>=0.14.8",
+  "pyright>=1.1.407",
+  "pre-commit>=4.5.0",
+  "commitizen>=4.3.0",
+]
 
 [project.urls]
 Homepage = "https://landerox.github.io/engineering-standards"
 Repository = "https://github.com/landerox/engineering-standards"
+Changelog = "https://github.com/landerox/engineering-standards/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["hatchling"]
@@ -28,9 +37,19 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["docs"]
 
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "1.0.0"
+tag_format = "v$version"
+version_files = ["pyproject.toml:^version"]
+update_changelog_on_bump = true
+changelog_file = "CHANGELOG.md"
+
 [tool.ruff]
 target-version = "py312"
 line-length = 88
+
+[tool.ruff.lint]
 select = [
   "E",   # pycodestyle errors
   "W",   # pycodestyle warnings
@@ -52,16 +71,16 @@ ignore = [
   "PLR2004", # magic value comparison
 ]
 
-[tool.ruff.format]
-quote-style = "double"
-docstring-code-format = true
-
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["docs"]
 force-sort-within-sections = true
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
+
+[tool.ruff.format]
+quote-style = "double"
+docstring-code-format = true
 
 [tool.pyright]
 pythonVersion = "3.12"
