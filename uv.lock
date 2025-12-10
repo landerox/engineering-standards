@@ -201,7 +201,7 @@ wheels = [
 [[package]]
 name = "engineering-standards"
 version = "1.0.0"
-source = { editable = "." }
+source = { virtual = "." }
 dependencies = [
     { name = "mkdocs-awesome-pages-plugin" },
     { name = "mkdocs-git-revision-date-localized-plugin" },
@@ -233,7 +233,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "commitizen", specifier = ">=4.3.0" },
+    { name = "commitizen", specifier = ">=4.10.0" },
     { name = "pre-commit", specifier = ">=4.5.0" },
     { name = "pyright", specifier = ">=1.1.407" },
     { name = "ruff", specifier = ">=0.14.8" },
